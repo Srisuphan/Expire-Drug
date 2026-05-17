@@ -416,13 +416,7 @@ async function submitReturn(){
   document.getElementById('pmSelf').checked=true;
   clearSig();rebuildReturnSel();document.getElementById('returnCompany').value='';filterReturnDrugs();
   const doneMsg='บันทึกการรับคืนสำเร็จ'+(sigUrl?' (บันทึกลายเซ็นแล้ว)':' (ลายเซ็นเก็บใน Cache)');
-  if(pickupMethod==='truck'){
-    showAlert('alert-return',doneMsg+' · ส่งไปยังหน้าสินค้ารอรถมารับแล้ว','success');
-    setTimeout(()=>switchPage('pickup'),800);
-  } else {
-    showAlert('alert-return',doneMsg,'success');
-    setTimeout(()=>switchPage('history'),800);
-  }
+  showAlert('alert-return',doneMsg,'success');
 }
 
 async function cancelReturn(retId){
