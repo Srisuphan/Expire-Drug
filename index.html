@@ -1,483 +1,722 @@
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600&display=swap');
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{font-family:'Sarabun','Thonburi','TH Sarabun New',sans-serif;-webkit-text-size-adjust:100%;background:var(--color-background-tertiary,#f5f5f3)}
-.nav{background:var(--color-background-primary);border-bottom:.5px solid var(--color-border-tertiary);padding:0 1rem;display:flex;align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:50}
-.nav-logo{font-size:13px;font-weight:600;color:#0F6E56;padding:12px 14px 12px 0;border-right:.5px solid var(--color-border-tertiary);margin-right:8px;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:5px}
-.nav-tab{padding:12px 12px;font-size:13px;cursor:pointer;border:none;background:none;color:var(--color-text-secondary);display:flex;align-items:center;gap:5px;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit;flex-shrink:0}
-.nav-tab.active{color:#0F6E56;border-bottom-color:#1D9E75;font-weight:600}
-.page{display:none;padding:1rem;max-width:900px;margin:0 auto}.page.active{display:block}
-.card{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem;margin-bottom:1rem}
-.sec-title{font-size:15px;font-weight:600;color:var(--color-text-primary);margin-bottom:.75rem;display:flex;align-items:center;gap:8px}
-.sec-title i{font-size:17px;color:#1D9E75}
-.fg{display:flex;flex-direction:column;gap:5px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.full{grid-column:1/-1}
-label.lbl{font-size:13px;color:var(--color-text-secondary)}
-input,select,textarea{
-  font-family:'Sarabun','Thonburi',sans-serif;font-size:16px;
-  padding:11px 12px;border:.5px solid var(--color-border-secondary);
-  border-radius:8px;background:var(--color-background-secondary);
-  color:var(--color-text-primary);width:100%;outline:none;
-  -webkit-appearance:none;appearance:none
-}
-input:focus,select:focus,textarea:focus{border-color:#1D9E75;background:var(--color-background-primary)}
-textarea{resize:vertical;min-height:60px}
-select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;padding-right:36px
-}
-.btn{font-family:'Sarabun','Thonburi',sans-serif;padding:11px 16px;border-radius:8px;font-size:14px;cursor:pointer;border:.5px solid var(--color-border-secondary);display:inline-flex;align-items:center;gap:6px;background:none;color:var(--color-text-primary);touch-action:manipulation}
-.btn:active{opacity:.7}
-.btn-primary{background:#1D9E75;color:#fff;border-color:#1D9E75}
-.btn-danger{background:#E24B4A;color:#fff;border-color:#E24B4A}
-.btn-warning{background:#BA7517;color:#fff;border-color:#BA7517}
-.btn-info{background:#185FA5;color:#fff;border-color:#185FA5}
-.btn-sm{padding:8px 12px;font-size:13px}
-.btn-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sarabun',sans-serif;font-size:16px}
+.app{min-height:600px;background:#d8f0e6}
+.nav{background:#ffffff;border-bottom:2px solid #a8ddc5;padding:0 1.5rem;display:flex;align-items:center;position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.nav-logo{font-size:17px;font-weight:600;color:#0F6E56;padding:14px 20px 14px 0;border-right:1.5px solid #a8ddc5;margin-right:12px;display:flex;align-items:center;gap:8px}
+.nav-tab{padding:12px 18px;font-size:16px;cursor:pointer;border:1.5px solid #b8ddd0;border-bottom:none;border-radius:10px 10px 0 0;background:#e8f5ee;color:#2a7a5a;display:flex;align-items:center;gap:7px;transition:all .15s;white-space:nowrap;font-family:'Sarabun',sans-serif;margin-right:6px;margin-top:6px}
+.nav-tab.active{background:#ffffff;color:#0F6E56;border-color:#1D9E75;font-weight:600;border-bottom:2px solid #ffffff;margin-bottom:-2px}
+.nav-tab:hover:not(.active){background:#c8ead8;color:#085041}
+.nav-tab.blue-tab{border-color:#b8d4ee;background:#e8f3fc;color:#185FA5}
+.nav-tab.blue-tab.active{color:#0a3f78;border-color:#185FA5;border-bottom:2px solid #ffffff}
+.nav-tab.blue-tab:hover:not(.active){background:#cce0f5;color:#0a3f78}
+.page{display:none;padding:1.5rem;max-width:900px;margin:0 auto}.page.active{display:block}
+.card{background:#ffffff;border:1.5px solid #a8ddc5;border-radius:14px;padding:1.4rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(29,158,117,.07)}
+.sec-title{font-size:17px;font-weight:600;color:#1a4a35;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.sec-title i{font-size:20px;color:#1D9E75}
+.fg{display:flex;flex-direction:column;gap:7px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}
+label{font-size:15px;color:#2a5a45;font-weight:500}
+input,select,textarea{font-family:'Sarabun',sans-serif;font-size:16px;padding:10px 14px;border:1.5px solid #8ecfb0;border-radius:9px;background:#ffffff;color:#1a2e24;width:100%;outline:none;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{border-color:#1D9E75;box-shadow:0 0 0 3px rgba(29,158,117,.15);background:#ffffff}
+textarea{resize:vertical;min-height:70px}
+.btn{font-family:'Sarabun',sans-serif;padding:10px 20px;border-radius:9px;font-size:16px;cursor:pointer;border:1.5px solid #8ecfb0;display:inline-flex;align-items:center;gap:7px;transition:all .15s;background:#ffffff;color:#1a4a35}
+.btn:hover{background:#d8f0e6}
+.btn-primary{background:#1D9E75;color:#fff;border-color:#1D9E75}.btn-primary:hover{background:#0F6E56}
+.btn-danger{background:#E24B4A;color:#fff;border-color:#E24B4A}.btn-danger:hover{background:#A32D2D}
+.btn-warning{background:#BA7517;color:#fff;border-color:#BA7517}.btn-warning:hover{background:#854F0B}
+.btn-info{background:#185FA5;color:#fff;border-color:#185FA5}.btn-info:hover{background:#0C447C}
+.btn-sm{padding:7px 14px;font-size:14px}
+.btn-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:1rem}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:500}
 .b-amber{background:#FAEEDA;color:#854F0B}.b-green{background:#EAF3DE;color:#3B6D11}.b-blue{background:#E6F1FB;color:#185FA5}
 .b-purple{background:#EEEDFE;color:#534AB7}.b-red{background:#FCEBEB;color:#A32D2D}.b-teal{background:#E1F5EE;color:#0F6E56}
-.b-gray{background:var(--color-background-secondary);color:var(--color-text-secondary)}
-.stat4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
-.stat-c{background:var(--color-background-secondary);border-radius:8px;padding:10px 12px}
-.stat-l{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
-.stat-v{font-size:18px;font-weight:600;color:var(--color-text-primary)}
-.alert{padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:10px;display:flex;align-items:flex-start;gap:8px}
-.al-ok{background:#EAF3DE;color:#3B6D11}.al-err{background:#FCEBEB;color:#A32D2D}.al-info{background:#E6F1FB;color:#185FA5}
-.total-box{background:#E1F5EE;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.total-l{font-size:13px;color:#0F6E56}.total-v{font-size:18px;font-weight:600;color:#085041}
-.gs-bar{display:flex;align-items:center;gap:8px;background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:10px 12px;margin-bottom:1rem;flex-wrap:wrap}
-.gs-st{font-size:12px;padding:3px 10px;border-radius:999px;white-space:nowrap}
-.gs-ok{background:#EAF3DE;color:#3B6D11}.gs-err{background:#FCEBEB;color:#A32D2D}.gs-idle{background:var(--color-background-secondary);color:var(--color-text-secondary)}
-.divider{border:none;border-top:.5px solid var(--color-border-tertiary);margin:.75rem 0}
-.h-item{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem;margin-bottom:10px}
-.h-item.is-cancelled{border-color:#F7C1C1;opacity:.8}
-.h-sig{width:100px;height:42px;border:.5px solid var(--color-border-tertiary);border-radius:6px;object-fit:contain;background:var(--color-background-secondary)}
-.fbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.fbar input,.fbar select{width:auto;flex:1;min-width:90px;font-size:14px;padding:9px 8px}
-.cancelled-banner{background:#FCEBEB;border-radius:8px;padding:8px 12px;font-size:13px;color:#A32D2D;display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.comp-section{border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--color-background-secondary)}
-.comp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px;flex-wrap:wrap}
-.comp-fields{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:10px}
-.comp-fields input,.comp-fields select{background:var(--color-background-primary)}
-.comp-row-bottom{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
-.confirmed-info{font-size:13px;color:var(--color-text-secondary);display:flex;gap:12px;flex-wrap:wrap;padding:4px 0}
-.log-list{display:flex;flex-direction:column;gap:4px}
-.log-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--color-text-secondary);padding:5px 8px;border-radius:6px;background:var(--color-background-primary);flex-wrap:wrap}
-.log-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
-.dot-created{background:#1D9E75}.dot-confirmed{background:#185FA5}.dot-cancelled{background:#E24B4A}.dot-comp{background:#BA7517}
-.sig-wrap{border:.5px solid var(--color-border-secondary);border-radius:8px;overflow:hidden;position:relative}
-#sigCanvas{display:block;width:100%;touch-action:none;background:var(--color-background-secondary)}
-.sig-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:13px;color:var(--color-text-tertiary);pointer-events:none}
+.b-gray{background:#e8f5ee;color:#2a7a5a;border:1px solid #a8ddc5}
+.b-orange{background:#FFF0E0;color:#A0520F}.b-truck{background:#E8F0FE;color:#1A56A0}
+.pickup-item{background:#fff;border:1.5px solid #a8ddc5;border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:10px;box-shadow:0 2px 6px rgba(29,158,117,.06)}
+.pickup-item.done{border-color:#c8ead8;opacity:.7}
+.al-success{background:#EAF3DE;color:#3B6D11}
+
+.dtable{width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed}
+.dtable th{text-align:left;padding:9px 11px;background:#e8f5ee;color:#2a5a45;font-weight:600;border-bottom:1.5px solid #a8ddc5}
+.dtable td{padding:10px 11px;border-bottom:1px solid #c8ead8;vertical-align:middle;color:#1a2e24;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dtable tr:last-child td{border-bottom:none}.dtable tr:hover td{background:#f0faf5}
+.empty{text-align:center;padding:2.5rem;color:#4a8a6a}
+.empty i{font-size:40px;margin-bottom:8px;display:block;opacity:.4}
+.sig-wrap{border:1.5px solid #8ecfb0;border-radius:9px;overflow:hidden;position:relative}
+#sigCanvas{display:block;width:100%;cursor:crosshair;touch-action:none;background:#ffffff}
+#returnCompany{background:#ffffff;color:#1a2e24;border:1.5px solid #1D9E75;border-radius:9px;padding:10px 14px;font-size:16px;font-weight:500;width:100%;cursor:pointer;appearance:auto;-webkit-appearance:auto}
+#drugCompany{background:#ffffff;color:#1a2e24;border:1.5px solid #1D9E75;border-radius:9px;padding:10px 14px;font-size:16px;font-weight:500;width:100%;cursor:pointer;appearance:auto;-webkit-appearance:auto}
+.sig-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:15px;color:#7ab090;pointer-events:none}
 .sig-clear{position:absolute;top:8px;right:8px}
-.empty{text-align:center;padding:2rem;color:var(--color-text-secondary)}
-.empty i{font-size:32px;margin-bottom:8px;display:block;opacity:.4}
-
-/* ── RADIO native-label approach (iOS กดได้แน่นอน) ── */
-.radio-g{display:flex;gap:8px;flex-wrap:wrap}
-.radio-lbl{
-  display:flex;align-items:center;gap:8px;
-  font-size:15px;padding:13px 16px;
-  border:.5px solid var(--color-border-secondary);border-radius:8px;
-  background:var(--color-background-secondary);
-  font-family:'Sarabun','Thonburi',sans-serif;
-  flex:1;min-width:130px;cursor:pointer;
-  touch-action:manipulation
-}
-.radio-lbl input[type=radio]{
-  width:20px;height:20px;flex-shrink:0;
-  accent-color:#1D9E75;cursor:pointer
-}
-input[type=radio]:checked + .radio-txt{color:#085041}
-.radio-lbl:has(input:checked){border-color:#1D9E75;background:#E1F5EE}
-
-/* ── CHECKBOX list (iOS-safe: label ครอบทั้งแถว) ── */
-.chk-list{display:flex;flex-direction:column;gap:0}
-.chk-lbl{
-  display:flex;align-items:center;gap:12px;
-  padding:13px 10px;
-  border-bottom:.5px solid var(--color-border-tertiary);
-  cursor:pointer;touch-action:manipulation;
-  background:var(--color-background-primary)
-}
-.chk-lbl:last-child{border-bottom:none}
-.chk-lbl:active{background:var(--color-background-secondary)}
-.chk-lbl input[type=checkbox]{
-  width:22px;height:22px;flex-shrink:0;accent-color:#1D9E75;cursor:pointer
-}
-.chk-info{flex:1;min-width:0}
-.chk-name{font-size:14px;font-weight:500;color:var(--color-text-primary)}
-.chk-sub{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
-.chk-val{font-size:13px;color:#085041;font-weight:500;flex-shrink:0;white-space:nowrap}
-.chk-all-lbl{
-  display:flex;align-items:center;gap:12px;
-  padding:10px 10px;background:var(--color-background-secondary);
-  border-radius:6px;margin-bottom:8px;cursor:pointer;
-  touch-action:manipulation;font-size:14px;font-weight:600;color:var(--color-text-primary)
-}
-.chk-all-lbl input[type=checkbox]{width:22px;height:22px;accent-color:#1D9E75;cursor:pointer}
+.stat4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1rem}
+.stat-c{background:#ffffff;border:1.5px solid #a8ddc5;border-radius:10px;padding:12px 16px}
+.stat-l{font-size:13px;color:#3a7a5a;margin-bottom:4px;font-weight:500}
+.stat-v{font-size:22px;font-weight:600;color:#1a2e24}
+.alert{padding:11px 15px;border-radius:9px;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.al-ok{background:#EAF3DE;color:#3B6D11}.al-err{background:#FCEBEB;color:#A32D2D}.al-info{background:#E6F1FB;color:#185FA5}
+.divider{border:none;border-top:1px solid #c8ead8;margin:.75rem 0}
+.h-item{background:#ffffff;border:1.5px solid #a8ddc5;border-radius:14px;padding:1.4rem;margin-bottom:12px;box-shadow:0 2px 6px rgba(29,158,117,.06)}
+.h-item.is-cancelled{border-color:#F7C1C1;background:#FFFAFA;opacity:.8}
+.h-sig{width:120px;height:50px;border:1.5px solid #8ecfb0;border-radius:8px;object-fit:contain;background:#f0faf5;cursor:pointer;transition:box-shadow .15s}
+.h-sig:hover{box-shadow:0 0 0 3px rgba(29,158,117,.25)}
+.fbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fbar input,.fbar select{width:auto;flex:1;min-width:120px;font-size:15px;padding:8px 12px}
+.radio-g{display:flex;gap:10px;flex-wrap:wrap}
+.radio-o{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:16px;padding:10px 16px;border:1.5px solid #8ecfb0;border-radius:9px;transition:all .15s;background:#ffffff}
+.radio-o:has(input:checked){border-color:#1D9E75;background:#E1F5EE;color:#085041}
+.radio-o input{width:auto;accent-color:#1D9E75}
+.total-box{background:#d8f5ea;border:1px solid #a8ddc5;border-radius:9px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.total-l{font-size:15px;color:#0F6E56;font-weight:500}.total-v{font-size:20px;font-weight:600;color:#085041}
+.gs-bar{display:flex;align-items:center;gap:10px;background:#ffffff;border:1.5px solid #a8ddc5;border-radius:10px;padding:10px 14px;margin-bottom:1rem;flex-wrap:wrap}
+.gs-st{font-size:13px;padding:4px 12px;border-radius:999px;white-space:nowrap}
+.gs-ok{background:#EAF3DE;color:#3B6D11}.gs-err{background:#FCEBEB;color:#A32D2D}.gs-idle{background:#e8f5ee;color:#3a7a5a}
+.combo-wrap{position:relative}
+.combo-list{position:absolute;z-index:200;top:100%;left:0;right:0;background:#ffffff;border:1.5px solid #8ecfb0;border-radius:9px;max-height:200px;overflow-y:auto;margin-top:2px;box-shadow:0 4px 12px rgba(29,158,117,.12);display:none}
+.combo-list.open{display:block}
+.ci{padding:9px 13px;font-size:15px;cursor:pointer;color:#1a2e24}.ci:hover{background:#E1F5EE;color:#085041}
+.ci .cc{font-size:12px;color:#5a9a7a;margin-left:6px}
+.comp-section{border:1.5px solid #a8ddc5;border-radius:10px;padding:14px;margin-bottom:10px;background:#f5fcf8}
+.comp-section.cs-none{background:#fff5f5;border-color:#f0b8b8}
+.comp-section.cs-partial{background:#fffbf0;border-color:#f0d890}
+.comp-section.cs-full{background:#f2fbf5;border-color:#90d4a8}
+.comp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.comp-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-items:end;margin-bottom:10px}
+.comp-fields input,.comp-fields select{background:#ffffff}
+.comp-row-bottom{display:flex;justify-content:flex-end;gap:8px}
+.confirmed-info{font-size:14px;color:#2a5a45;display:flex;gap:16px;flex-wrap:wrap;padding:4px 0}
+.cancelled-banner{background:#FCEBEB;border-radius:9px;padding:9px 15px;font-size:15px;color:#A32D2D;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.log-section{margin-top:10px}.log-title{font-size:13px;font-weight:600;color:#3a7a5a;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.log-list{display:flex;flex-direction:column;gap:4px}
+.log-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#3a6a55;padding:5px 9px;border-radius:7px;background:#ffffff}
+.log-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-created{background:#1D9E75}.dot-comp{background:#BA7517}.dot-confirmed{background:#185FA5}.dot-cancelled{background:#E24B4A}
+/* Signature pop-up */
+.sig-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:999;align-items:center;justify-content:center}
+.sig-modal.open{display:flex}
+.sig-modal-box{background:#fff;border-radius:16px;padding:1.5rem;max-width:500px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,.18)}
+.sig-modal-title{font-size:17px;font-weight:600;color:#1a4a35;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.sig-modal-img{width:100%;border:1.5px solid #8ecfb0;border-radius:10px;background:#f5fcf8;object-fit:contain;max-height:220px}
+.sig-modal-close{margin-top:1rem;width:100%}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
 
+<div class="app">
 <nav class="nav">
-  <div class="nav-logo"><i class="ti ti-pill" aria-hidden="true"></i>ระบบยาหมดอายุ</div>
-  <button class="nav-tab active" onclick="gp('record')" id="tab-record"><i class="ti ti-clipboard-plus" aria-hidden="true"></i>บันทึกยา</button>
-  <button class="nav-tab" onclick="gp('return')" id="tab-return"><i class="ti ti-file-check" aria-hidden="true"></i>รับคืน</button>
-  <button class="nav-tab" onclick="gp('history')" id="tab-history"><i class="ti ti-history" aria-hidden="true"></i>ประวัติ</button>
+  <div class="nav-logo"><i class="ti ti-pill"></i>ระบบยาหมดอายุ</div>
+  <button class="nav-tab active" onclick="switchPage('record')" id="tab-record"><i class="ti ti-clipboard-plus"></i>บันทึกยาคืน</button>
+  <button class="nav-tab" onclick="switchPage('return')" id="tab-return"><i class="ti ti-file-check"></i>รับคืนสินค้า</button>
+  <button class="nav-tab" onclick="switchPage('history')" id="tab-history"><i class="ti ti-history"></i>ประวัติการรับคืน</button>
+  <button class="nav-tab blue-tab" onclick="switchPage('pickup')" id="tab-pickup"><i class="ti ti-truck-delivery"></i>สินค้ารอรถมารับ</button>
 </nav>
-
-<div style="max-width:900px;margin:0 auto;padding:.75rem 1rem 0">
+<div id="gs-bar-wrap" style="display:block;max-width:900px;margin:0 auto;padding:.75rem 1.5rem 0">
   <div class="gs-bar">
-    <i class="ti ti-table" aria-hidden="true" style="font-size:15px;color:#1D9E75;flex-shrink:0"></i>
+    <i class="ti ti-table" style="font-size:16px;color:#1D9E75;flex-shrink:0"></i>
+    <span style="font-size:13px;color:var(--color-text-secondary);flex-shrink:0">Google Sheets:</span>
     <span class="gs-st gs-idle" id="gsStatus" style="flex:1">กำลังเชื่อมต่อ...</span>
-    <button class="btn btn-sm" onclick="syncAll(true)" id="syncBtn"><i class="ti ti-refresh" aria-hidden="true"></i>ดึงข้อมูล</button>
-    <button class="btn btn-sm" onclick="clearCache()" style="color:#A32D2D"><i class="ti ti-trash" aria-hidden="true"></i>Cache</button>
+    <button class="btn btn-sm" onclick="syncAll(true)" id="syncBtn"><i class="ti ti-refresh"></i>ดึงข้อมูล</button>
+    <button class="btn btn-sm" onclick="clearLocalData()" style="color:#A32D2D"><i class="ti ti-trash"></i>ล้าง Cache</button>
   </div>
 </div>
 
-<!-- PAGE 1 -->
 <div class="page active" id="page-record">
-  <div id="ar"></div>
+  <div id="alert-record"></div>
   <div class="card">
-    <div class="sec-title"><i class="ti ti-pill" aria-hidden="true"></i>บันทึกยาหมดอายุ</div>
+    <div class="sec-title"><i class="ti ti-pill"></i>บันทึกยาหมดอายุ</div>
     <div class="grid2">
-      <div class="fg"><label class="lbl">ชื่อยา *</label><input type="text" id="dName" placeholder="เช่น Amoxicillin 500mg" autocomplete="off"></div>
-      <div class="fg"><label class="lbl">Lot No.</label><input type="text" id="dLot" placeholder="LOT2024001" autocomplete="off"></div>
-
-      <!-- บริษัท: ใช้ select native — iOS scroll ได้ 100% -->
-      <div class="fg full">
-        <label class="lbl">บริษัทยา *</label>
-        <select id="dCompany">
-          <option value="">— เลือกบริษัท —</option>
-        </select>
+      <div class="fg"><label>ชื่อยา *</label><input type="text" id="drugName" placeholder="เช่น Amoxicillin 500mg"></div>
+      <div class="fg"><label>รหัสยา / Lot No.</label><input type="text" id="drugLot" placeholder="เช่น LOT2024001"></div>
+      <div class="fg full"><label>บริษัทยา *</label>
+        <select id="drugCompany" style="background:#ffffff;color:#1a1a1a;border:.5px solid #1D9E75;font-weight:500;cursor:pointer"><option value="">— เลือกบริษัท —</option></select>
       </div>
-
-      <div class="fg"><label class="lbl">วันหมดอายุ *</label><input type="date" id="dExpiry"></div>
-      <div class="fg"><label class="lbl">จำนวน *</label><input type="number" id="dQty" placeholder="0" min="1" inputmode="numeric" oninput="calcTotal()"></div>
-      <div class="fg"><label class="lbl">หน่วย</label>
-        <select id="dUnit"><option>กล่อง</option><option>ขวด</option><option>แผง</option><option>เม็ด</option><option>ซอง</option><option>หลอด</option><option>อัน</option></select>
-      </div>
-      <div class="fg"><label class="lbl">มูลค่า/หน่วย (บาท) *</label><input type="number" id="dPrice" placeholder="0.00" min="0" step="0.01" inputmode="decimal" oninput="calcTotal()"></div>
-      <div class="fg"><label class="lbl">ผู้บันทึก</label><input type="text" id="dRecorder" placeholder="ชื่อเภสัชกร" autocomplete="off"></div>
-      <div class="fg full"><div class="total-box"><span class="total-l"><i class="ti ti-calculator" aria-hidden="true" style="font-size:14px;vertical-align:-2px;margin-right:4px"></i>มูลค่ารวม</span><span class="total-v" id="dTotal">0.00 บาท</span></div></div>
-      <div class="fg full"><label class="lbl">หมายเหตุ</label><textarea id="dNote" placeholder="ข้อมูลเพิ่มเติม..."></textarea></div>
+      <div class="fg"><label>วันหมดอายุ *</label><input type="date" id="drugExpiry"></div>
+      <div class="fg"><label>จำนวน *</label><input type="number" id="drugQty" placeholder="0" min="1" oninput="calcTotal()"></div>
+      <div class="fg"><label>หน่วย</label><select id="drugUnit"><option>กล่อง</option><option>ขวด</option><option>แผง</option><option>เม็ด</option><option>ซอง</option><option>หลอด</option><option>อัน</option></select></div>
+      <div class="fg"><label>มูลค่าต่อหน่วย (บาท) *</label><input type="number" id="drugPrice" placeholder="0.00" min="0" step="0.01" oninput="calcTotal()"></div>
+      <div class="fg"><label>ผู้บันทึก</label><input type="text" id="drugRecorder" placeholder="ชื่อเภสัชกร / เจ้าหน้าที่"></div>
+      <div class="fg full"><div class="total-box"><span class="total-l"><i class="ti ti-calculator" style="font-size:15px;vertical-align:-2px;margin-right:4px"></i>มูลค่ารวม</span><span class="total-v" id="drugTotal">0.00 บาท</span></div></div>
+      <div class="fg full"><label>หมายเหตุ</label><textarea id="drugNote" placeholder="ข้อมูลเพิ่มเติม..."></textarea></div>
     </div>
     <div class="btn-acts">
-      <button class="btn" onclick="clearForm()"><i class="ti ti-eraser" aria-hidden="true"></i>ล้าง</button>
-      <button class="btn btn-primary" onclick="saveDrug()"><i class="ti ti-plus" aria-hidden="true"></i>บันทึกยา</button>
+      <button class="btn" onclick="clearForm()"><i class="ti ti-eraser"></i>ล้างข้อมูล</button>
+      <button class="btn btn-primary" onclick="saveDrug()"><i class="ti ti-plus"></i>บันทึกยา</button>
     </div>
   </div>
 </div>
 
-<!-- PAGE 2 -->
 <div class="page" id="page-return">
-  <div id="aRet"></div>
+  <div id="alert-return"></div>
   <div class="card">
-    <div class="sec-title"><i class="ti ti-file-check" aria-hidden="true"></i>ข้อมูลการรับคืน</div>
+    <div class="sec-title"><i class="ti ti-file-check"></i>ข้อมูลการรับคืน</div>
     <div class="grid2">
-      <div class="fg"><label class="lbl">วันที่รับคืน</label><input type="date" id="retDate"></div>
-      <div class="fg full"><label class="lbl">บริษัทที่รับคืน *</label>
-        <select id="retCompany" onchange="loadRetDrugs()"><option value="">— เลือกบริษัท —</option></select>
+      <div class="fg"><label>วันที่รับคืน</label><input type="date" id="returnDate"></div>
+      <div class="fg full"><label>บริษัทที่รับคืน * <span style="font-size:12px;color:var(--color-text-tertiary)">(เฉพาะบริษัทที่มีรายการรอส่งคืน)</span></label>
+        <select id="returnCompany" onchange="filterReturnDrugs()"><option value="">— เลือกบริษัท —</option></select>
       </div>
-      <div class="fg"><label class="lbl">ชื่อผู้รับคืน *</label><input type="text" id="retReceiver" placeholder="ชื่อตัวแทนบริษัท" autocomplete="off"></div>
-      <div class="fg"><label class="lbl">เบอร์โทร</label><input type="tel" id="retPhone" placeholder="081-234-5678" inputmode="tel"></div>
-      <div class="fg full">
-        <label class="lbl">ประเภทการคืน *</label>
-        <!-- radio: label ครอบ input ทั้งหมด — iOS กดได้แน่นอน -->
+      <div class="fg"><label>ผู้แทนบริษัท *</label><input type="text" id="returnReceiverName" placeholder="ชื่อผู้แทนบริษัท"></div>
+      <div class="fg"><label>เบอร์โทรผู้แทนบริษัท</label><input type="tel" id="returnPhone" placeholder="081-234-5678"></div>
+      <div class="fg full"><label>เงื่อนไขในการคืนสินค้า *</label>
         <div class="radio-g">
-          <label class="radio-lbl" for="rtEx">
-            <input type="radio" id="rtEx" name="rType" value="เปลี่ยนสินค้า" checked>
-            <span class="radio-txt"><i class="ti ti-arrows-exchange" aria-hidden="true" style="font-size:15px;vertical-align:-2px"></i> เปลี่ยนสินค้า</span>
-          </label>
-          <label class="radio-lbl" for="rtCN">
-            <input type="radio" id="rtCN" name="rType" value="CN">
-            <span class="radio-txt"><i class="ti ti-receipt-refund" aria-hidden="true" style="font-size:15px;vertical-align:-2px"></i> CN (Credit Note)</span>
-          </label>
+          <label class="radio-o"><input type="radio" name="returnType" value="เปลี่ยนสินค้า" id="rtExchange" checked><i class="ti ti-arrows-exchange" style="font-size:16px"></i>เปลี่ยนสินค้า</label>
+          <label class="radio-o"><input type="radio" name="returnType" value="CN"><i class="ti ti-receipt-refund" style="font-size:16px"></i>CN (Credit Note)</label>
+        </div>
+      </div>
+      <div class="fg full"><label>การรับสินค้า *</label>
+        <div class="radio-g">
+          <label class="radio-o"><input type="radio" name="pickupMethod" value="self" id="pmSelf" checked><i class="ti ti-walk" style="font-size:16px"></i>รับสินค้าไปเอง</label>
+          <label class="radio-o"><input type="radio" name="pickupMethod" value="truck"><i class="ti ti-truck-delivery" style="font-size:16px"></i>รอรถมารับสินค้า</label>
         </div>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="sec-title"><i class="ti ti-pill" aria-hidden="true"></i>รายการยาที่รอส่งคืน <span id="retNote" style="font-size:12px;font-weight:400;color:var(--color-text-tertiary)"></span></div>
-    <div id="retDrugList"><div class="empty"><i class="ti ti-building-store" aria-hidden="true"></i>เลือกบริษัทก่อน</div></div>
+    <div class="sec-title"><i class="ti ti-pill"></i>รายการยาที่รอส่งคืน <span id="returnListNote" style="font-size:12px;font-weight:400;color:var(--color-text-tertiary)"></span></div>
+    <div id="return-drug-list"><div class="empty"><i class="ti ti-building-store"></i>เลือกบริษัทก่อน</div></div>
   </div>
   <div class="card">
-    <div class="sec-title"><i class="ti ti-writing" aria-hidden="true"></i>ลายเซ็นผู้รับคืน</div>
+    <div class="sec-title"><i class="ti ti-writing"></i>ลายเซ็นผู้รับคืน</div>
     <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:10px">วาดลายเซ็นในกรอบด้านล่าง</p>
-    <div class="sig-wrap" style="height:150px">
-      <canvas id="sigCanvas" height="150"></canvas>
+    <div class="sig-wrap" style="height:155px">
+      <canvas id="sigCanvas" height="155"></canvas>
       <span class="sig-hint" id="sigHint">วาดลายเซ็นที่นี่</span>
-      <button class="btn btn-sm sig-clear" onclick="clearSig()"><i class="ti ti-eraser" aria-hidden="true"></i></button>
+      <button class="btn btn-sm sig-clear" onclick="clearSig()"><i class="ti ti-eraser"></i></button>
+    </div>
+    <div class="fg" style="margin-top:1rem">
+      <label><i class="ti ti-notes" style="font-size:15px;vertical-align:-2px;color:#1D9E75"></i> หมายเหตุ (NOTE)</label>
+      <textarea id="returnNote" placeholder="หมายเหตุเพิ่มเติม เช่น สภาพสินค้า เงื่อนไขพิเศษ..." style="min-height:80px"></textarea>
     </div>
     <div class="btn-acts" style="margin-top:1rem">
-      <button class="btn btn-primary" onclick="submitReturn()"><i class="ti ti-check" aria-hidden="true"></i>ยืนยันการรับคืน</button>
+      <button class="btn btn-primary" onclick="submitReturn()"><i class="ti ti-check"></i>ยืนยันการรับคืน</button>
     </div>
   </div>
 </div>
 
-<!-- PAGE 3 -->
 <div class="page" id="page-history">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;gap:8px">
-    <div class="sec-title" style="margin:0"><i class="ti ti-history" aria-hidden="true"></i>ประวัติการรับคืน</div>
-    <button class="btn btn-sm" onclick="exportCSV()"><i class="ti ti-download" aria-hidden="true"></i>Export</button>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:10px">
+    <div class="sec-title" style="margin:0"><i class="ti ti-history"></i>ประวัติการรับคืน</div>
+    <button class="btn btn-sm" onclick="exportCSV()"><i class="ti ti-download"></i>Export CSV</button>
   </div>
   <div class="stat4">
-    <div class="stat-c"><div class="stat-l">รับคืนทั้งหมด</div><div class="stat-v" id="st-total">0</div></div>
-    <div class="stat-c"><div class="stat-l">มูลค่ารวม (บาท)</div><div class="stat-v" id="st-value">0</div></div>
-    <div class="stat-c"><div class="stat-l">ชดเชยแล้ว</div><div class="stat-v" id="st-done" style="color:#3B6D11">0</div></div>
-    <div class="stat-c"><div class="stat-l">ยังไม่ชดเชย</div><div class="stat-v" id="st-none" style="color:#A32D2D">0</div></div>
+    <div class="stat-c"><div class="stat-l">รับคืนทั้งหมด</div><div class="stat-v" id="stat-total">0</div></div>
+    <div class="stat-c"><div class="stat-l">มูลค่ารวม (บาท)</div><div class="stat-v" id="stat-value">0</div></div>
+    <div class="stat-c"><div class="stat-l">ชดเชยแล้ว</div><div class="stat-v" id="stat-done" style="color:#3B6D11">0</div></div>
+    <div class="stat-c"><div class="stat-l">ยังไม่ชดเชย</div><div class="stat-v" id="stat-none" style="color:#A32D2D">0</div></div>
   </div>
-  <div class="card" style="padding:.75rem">
+  <div class="card" style="padding:1rem">
     <div class="fbar">
-      <i class="ti ti-filter" aria-hidden="true" style="font-size:15px;color:var(--color-text-secondary);flex-shrink:0"></i>
-      <input type="text" id="fDrug" placeholder="ค้นหา..." oninput="renderHistory()">
-      <select id="fCo" onchange="renderHistory()"><option value="">บริษัท</option></select>
-      <select id="fType" onchange="renderHistory()"><option value="">ประเภท</option><option value="เปลี่ยนสินค้า">เปลี่ยนสินค้า</option><option value="CN">CN</option></select>
-      <select id="fComp" onchange="renderHistory()"><option value="">ชดเชย</option><option value="ยังไม่ชดเชย">ยังไม่ชดเชย</option><option value="ชดเชยบางส่วน">บางส่วน</option><option value="ชดเชยทั้งหมด">ทั้งหมด</option></select>
-      <select id="fCan" onchange="renderHistory()"><option value="">สถานะ</option><option value="active">ปกติ</option><option value="cancelled">ยกเลิก</option></select>
-      <button class="btn btn-sm" onclick="clearF()"><i class="ti ti-x" aria-hidden="true"></i></button>
+      <i class="ti ti-filter" style="font-size:16px;color:var(--color-text-secondary);flex-shrink:0"></i>
+      <input type="text" id="filterDrug" placeholder="ค้นหาชื่อสินค้า..." oninput="renderHistory()">
+      <select id="filterCompany" onchange="renderHistory()"><option value="">บริษัท (ทั้งหมด)</option></select>
+      <select id="filterType" onchange="renderHistory()" style="flex:none;min-width:130px">
+        <option value="">ประเภท (ทั้งหมด)</option><option value="เปลี่ยนสินค้า">เปลี่ยนสินค้า</option><option value="CN">CN</option>
+      </select>
+      <select id="filterComp" onchange="renderHistory()" style="flex:none;min-width:150px">
+        <option value="">การชดเชย (ทั้งหมด)</option>
+        <option value="ยังไม่ชดเชย">ยังไม่ชดเชย</option><option value="ชดเชยบางส่วน">ชดเชยบางส่วน</option><option value="ชดเชยทั้งหมด">ชดเชยทั้งหมด</option>
+      </select>
+      <select id="filterCancel" onchange="renderHistory()" style="flex:none;min-width:130px">
+        <option value="">สถานะ (ทั้งหมด)</option><option value="active">ปกติ</option><option value="cancelled">ยกเลิกแล้ว</option>
+      </select>
+      <select id="filterPickup" onchange="renderHistory()" style="flex:none;min-width:160px">
+        <option value="">การรับสินค้า (ทั้งหมด)</option>
+        <option value="self">รับสินค้าไปเอง</option>
+        <option value="truck_pending">รอรถมารับ</option>
+        <option value="truck_done">รถรับแล้ว</option>
+      </select>
+      <button class="btn btn-sm" onclick="clearFilters()"><i class="ti ti-x"></i>ล้าง</button>
     </div>
   </div>
-  <div id="histList"><div class="empty"><i class="ti ti-history" aria-hidden="true"></i>ยังไม่มีประวัติ</div></div>
+  <div id="history-list"><div class="empty"><i class="ti ti-history"></i>ยังไม่มีประวัติ</div></div>
+</div>
+<div class="page" id="page-pickup">
+  <div id="alert-pickup"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:10px">
+    <div class="sec-title" style="margin:0"><i class="ti ti-truck-delivery"></i>สินค้ารอรถมารับ</div>
+  </div>
+  <div class="card">
+    <div class="fg">
+      <label><i class="ti ti-building-store" style="font-size:15px;vertical-align:-2px;color:#1D9E75"></i> บริษัทที่สินค้ารอรถมารับ</label>
+      <select id="pickupCompany" onchange="renderPickupList()" style="background:#fff;border:1.5px solid #1D9E75;border-radius:9px;padding:10px 14px;font-size:16px;font-weight:500;cursor:pointer">
+        <option value="">— เลือกบริษัท —</option>
+      </select>
+    </div>
+  </div>
+  <div id="pickup-list"><div class="empty"><i class="ti ti-truck-delivery"></i>เลือกบริษัทเพื่อดูรายการ</div></div>
+  <!-- Confirm pickup form -->
+  <div class="card" id="pickup-confirm-box" style="display:none">
+    <div class="sec-title"><i class="ti ti-circle-check"></i>บันทึกการรับสินค้ากลับ</div>
+    <div class="grid2">
+      <div class="fg"><label>ชื่อคนมารับสินค้า *</label><input type="text" id="pickupReceiver" placeholder="ชื่อพนักงานขนส่ง/บริษัท"></div>
+      <div class="fg"><label>วันที่รับสินค้ากลับ *</label><input type="date" id="pickupDate"></div>
+    </div>
+    <div class="btn-acts" style="margin-top:1rem">
+      <button class="btn" onclick="document.getElementById('pickup-confirm-box').style.display='none'"><i class="ti ti-x"></i>ยกเลิก</button>
+      <button class="btn btn-primary" onclick="confirmPickup()"><i class="ti ti-check"></i>ยืนยันรับสินค้ากลับ</button>
+    </div>
+    <input type="hidden" id="pickupRetId">
+  </div>
+</div>
 </div>
 
+<!-- Signature Modal -->
+<div class="sig-modal" id="sigModal" onclick="if(event.target===this)closeSigModal()">
+  <div class="sig-modal-box">
+    <div class="sig-modal-title"><i class="ti ti-signature" style="color:#1D9E75"></i>ลายเซ็นผู้รับคืน</div>
+    <div id="sigModalMeta" style="font-size:14px;color:#3a7a5a;margin-bottom:10px"></div>
+    <img id="sigModalImg" class="sig-modal-img" src="" alt="ลายเซ็น">
+    <button class="btn sig-modal-close" onclick="closeSigModal()"><i class="ti ti-x"></i>ปิด</button>
+  </div>
+</div>
 <script>
-const GAS='https://script.google.com/macros/s/AKfycbwUG5eEtouGB3dJZb0NmkyNxD02LbwZSMGSQB8HDzD7emd1PFVh37wgG7wmNfmMagVM/exec';
-const D_STATUS=11,D_ID=12,R_RET_ID=0,R_DRUG_ID=19,R_CONFIRM=20,R_STATUS=21,R_COMP_ST=14,R_COMP_AM=15,R_COMP_DT=16;
-const DH=['วันที่บันทึก','ชื่อยา','บริษัท','Lot No.','วันหมดอายุ','จำนวน','หน่วย','มูลค่า/หน่วย','มูลค่ารวม','ผู้บันทึก','หมายเหตุ','สถานะ','drugId'];
-const RH=['ID','วันที่รับคืน','บริษัท','ผู้รับคืน','เบอร์โทร','ประเภท','ชื่อยา','Lot No.','จำนวน','หน่วย','วันหมดอายุ','มูลค่า/หน่วย','มูลค่ารวมสินค้า','มูลค่ารวมใบ','สถานะชดเชย','จำนวนชดเชย','วันที่ชดเชย','','','drugId','ยืนยันชดเชย','สถานะใบ'];
-const COMPANIES=[{code:'V004',name:'กรุงเทพฯฟาร์มาซี (ลด3%)'},{code:'V002',name:'กวงเตี่ยงดิสเปนซารี่'},{code:'V142',name:'เกร็กคู'},{code:'V003',name:'เกร็ทเตอร์ฟาร์ม่า'},{code:'V138',name:'เกิดผลสมุนไพร'},{code:'V005',name:'แก่นนคร'},{code:'V001',name:'แก้วมังกรเภสัช'},{code:'V007',name:'ขาวละออเภสัช'},{code:'V010',name:'ควอลิเมด'},{code:'V011',name:'คอนติเนนเติล-ฟาร์ม'},{code:'V008',name:'แคนตั้น เมดิแคร์'},{code:'V134',name:'แคสป้า ฟาร์มาซูติคอล'},{code:'V012',name:'ง่วนเฮงจั่น'},{code:'V014',name:'จรูญเภสัช'},{code:'V015',name:'จอมทอง'},{code:'V016',name:'เจ็ดดาว'},{code:'V017',name:'เจริญสุข'},{code:'V019',name:'ฉัตรชัย'},{code:'V020',name:'ชาญกิจเทรดดิ้ง'},{code:'V023',name:'ชีโน แปซิฟิก'},{code:'V131',name:'ชุมชนเภสัชกรรม'},{code:'V030',name:'ชูมิตร'},{code:'V024',name:'ซินต้าเทรดดิ้ง'},{code:'V021',name:'ซิลลิค ฟาร์มา'},{code:'V025',name:'เซ่งหลีโอสถ'},{code:'V029',name:'ดาด้า'},{code:'V026',name:'ดีเคเอสเอช (DKSH)'},{code:'V027',name:'ดีเคแอลแอล (DKLL)'},{code:'V032',name:'ตั้งเต็มจิตร์'},{code:'V031',name:'ถ้วยทองโอสถ'},{code:'V035',name:'ทรูไลน์ เมด'},{code:'V033',name:'ที.ซี.ฟาร์มาซูติคอล'},{code:'V039',name:'ที.แมน ฟาร์มา'},{code:'V040',name:'เทวกรรมโอสถ'},{code:'V036',name:'ไทยเวชการ'},{code:'V042',name:'ธงทองโอสถ'},{code:'V041',name:'ธีระพานิช'},{code:'V044',name:'นครพัฒนา'},{code:'V047',name:'นพรัตน์'},{code:'V046',name:'นิด้า ฟาร์มา'},{code:'V112',name:'นิวเจริญ ฟาร์มาซูติคอล'},{code:'V045',name:'นิวไลฟ์ ฟาร์มา'},{code:'V049',name:'บางกอกแล็ป'},{code:'V052',name:'บี เมด ฟาร์มาซูติคอล'},{code:'V053',name:'บี.เอ็ล.ฮั้ว'},{code:'V057',name:'บุคคโล'},{code:'V130',name:'บุญส่งโอสถ'},{code:'V051',name:'บูรพาโอสถ'},{code:'V056',name:'เบอร์แทรม'},{code:'V048',name:'เบอร์ลิน ฟาร์มาซูติคอล'},{code:'V054',name:'ใบโพธิ์'},{code:'V050',name:'ไบโอฟาร์ม'},{code:'V064',name:'ประสงค์เภสัช'},{code:'V062',name:'ปัจจุบันโอสถ'},{code:'V063',name:'แปซิฟิค เฮลธ์แคร์'},{code:'V144',name:'โป๊ยเซียน'},{code:'V067',name:'พรอส ฟาร์มา'},{code:'V069',name:'พัฒนาการเภสัช'},{code:'V068',name:'พาร์ตาแลบ'},{code:'V072',name:'พิคโก้ฟาร์มา'},{code:'V073',name:'พีดีแอล'},{code:'V065',name:'พีเอ็มแอล'},{code:'V071',name:'เพ็ญภาค'},{code:'V074',name:'เพรซิเดนท์ อินเตอร์ ฟาร์มา'},{code:'V018',name:'ฟาร์มาแคร์'},{code:'V076',name:'ฟาร์ม่าไลน์'},{code:'V075',name:'ฟาร์มาสแควร์'},{code:'V078',name:'เฟรนชิป'},{code:'V115',name:'เภสัชกรรมศรีประสิทธิ์'},{code:'V066',name:'มาซ่าแลป'},{code:'V080',name:'เมดเมเกอร์'},{code:'V079',name:'เมดไลน์'},{code:'V081',name:'แมคโครฟาร์'},{code:'V082',name:'โมเดิร์น ฟาร์ม่า'},{code:'V190',name:'ยันฮี'},{code:'V086',name:'ยูนีซัน'},{code:'V085',name:'ยูเนี่ยนเมดิคอล'},{code:'V090',name:'เยาวราช'},{code:'V091',name:'โรต้าลาบ'},{code:'V092',name:'โรยัล ดรักส์'},{code:'V093',name:'เลิศสิงห์เภสัชกรรม'},{code:'V096',name:'วิจารณ์เภสัช'},{code:'V136',name:'วิทูรเภสัช'},{code:'V098',name:'วิริยะ เมดิคอล'},{code:'V097',name:'วิริยะพานิช'},{code:'V095',name:'วีเอส ฟาร์ม่า'},{code:'V099',name:'ศรีจันทร์โอสถ'},{code:'V103',name:'ส.เจริญ เภสัช'},{code:'V102',name:'สยาม ฟาร์มาซูติคอล'},{code:'V100',name:'สหแพทย์เภสัช'},{code:'V104',name:'สัมมิท คอร์เปเรชั่น'},{code:'V105',name:'สามัคคีเภสัช'},{code:'V158',name:'แสงชัยเภสัช'},{code:'V101',name:'แสงไทย'},{code:'V110',name:'หมอมี'},{code:'V128',name:'หมอยาไทย'},{code:'V106',name:'หาญไทย'},{code:'V111',name:'ห้าตะขาบ'},{code:'V135',name:'เหลืองเวชภัณฑ์'},{code:'V108',name:'แหลมทอง การแพทย์'},{code:'V113',name:'องค์การเภสัชกรรม'},{code:'V145',name:'อ้วยอันโอสถ'},{code:'V116',name:'อาร์เอ็กซ์'},{code:'V123',name:'อุยเฮง'},{code:'V125',name:'เอ.เอ็น.บี ลาบ'},{code:'V181',name:'เอกไพศาล'},{code:'V107',name:'เอชเค เมดิซีน'},{code:'V192',name:'เอเชี่ยน ฟาร์มาซูติคอล'},{code:'V183',name:'แอตว๊านซ์'},{code:'V120',name:'แอโรแคร์'},{code:'V114',name:'โอลัน เคมเมด'},{code:'V122',name:'โอสถสภาไทโช'},{code:'V124',name:'โอสถอินเตอร์'},{code:'V121',name:'ฮีโร่มัยซิน'},{code:'V169',name:'เฮลท์ อิมแพค'}];
+/* ── URL ใหม่ ── */
+const GAS='https://script.google.com/macros/s/AKfycbxNbKrMQ-zAR0wfrHdKn-ps7BDoAOarxfye3VwxIyo1cgz1eoCfYN6A6rCA3_2QGzOn/exec';
 
-let drugs=[],returns=[],sigDraw=false,sigOK=false,retSet=new Set();
+/* index คงที่ตาม Sheet จริง */
+const D_STATUS=11,D_ID=12;
+const R_RET_ID=0,R_DRUG_ID=19,R_CONFIRM=20,R_STATUS=21;
+const R_COMP_ST=14,R_COMP_AM=15,R_COMP_DT=16;
 
-/* ── init company selects ── */
-function buildSelects(){
-  const s=document.getElementById('dCompany');
-  COMPANIES.forEach(c=>{const o=document.createElement('option');o.value=c.name;o.textContent=c.name+' ('+c.code+')';s.appendChild(o);});
-}
+const DRUGS_H=['วันที่บันทึก','ชื่อยา','บริษัท','Lot No.','วันหมดอายุ','จำนวน','หน่วย','มูลค่า/หน่วย','มูลค่ารวม','ผู้บันทึก','หมายเหตุ','สถานะ','drugId'];
+const RETURNS_H=['ID','วันที่รับคืน','บริษัท','ผู้รับคืน','เบอร์โทร','ประเภท','ชื่อยา','Lot No.','จำนวน','หน่วย','วันหมดอายุ','มูลค่า/หน่วย','มูลค่ารวมสินค้า','มูลค่ารวมใบ','สถานะชดเชย','จำนวนชดเชย','วันที่ชดเชย','ลายเซ็น URL','','drugId','ยืนยันชดเชย','สถานะใบ','การรับสินค้า','สถานะการรับ','ชื่อผู้มารับ','วันที่มารับ'];
 
-function G(id){return document.getElementById(id);}
+const COMPANIES=[{name:'กรุงเทพฯฟาร์มาซี'},{name:'กวงเตี่ยงดิสเปนซารี่'},{name:'ขาวละออเภสัช'},{name:'ควอลิเมด'},{name:'คอนติเนนเติล-ฟาร์ม'},{name:'คั่นกี่ (น้ำเต้าทอง)'},{name:'ง่วนเฮงจั่น'},{name:'จตุรพรโอสถ'},{name:'จรูญเภสัช'},{name:'จอมทอง'},{name:'จีนฮั่วเฮง'},{name:'ชาญกิจเทรดดิ้ง'},{name:'ชีโน แปซิฟิก'},{name:'ชุมชนเภสัชกรรม'},{name:'ชูมิตร'},{name:'ซินต้าเทรดดิ้ง'},{name:'ซิลลิค ฟาร์มา'},{name:'ซิสส์ เฮสท์แคร์'},{name:'ซีเครท เฮลธ์'},{name:'ซี่น อัน ตึ๊ง'},{name:'ดาด้า'},{name:'ดีซีเอช ออริก้า'},{name:'ดีเอ็น เซ็นเตอร์ (DNcenter)'},{name:'ตั้งเต็มจิตร์'},{name:'ถาวราเฮลท์'},{name:'ถ้วยทองโอสถ'},{name:'ทรูไลน์ เมด'},{name:'ที.ซี.ฟาร์มาซูติคอล'},{name:'ที.ที เซคชั่น'},{name:'ที.พี.ดรัก แลบบอราทอรี่ส์'},{name:'ที.แมน ฟาร์มา'},{name:'ที.โอ.เคมีคอลส์ (1979)'},{name:'ทีซี กรีนไพน์'},{name:'ทูบี มาร์เก็ตติ้ง'},{name:'ธงทองโอสถ'},{name:'ธนบุรี'},{name:'ธีระพานิช'},{name:'นครพัฒนา'},{name:'นพรัตน์'},{name:'นิวคอนเซพท์ โปรดัคท์'},{name:'นิวเจริญ ฟาร์มาซูติคอล'},{name:'นิวไลฟ์ ฟาร์มา'},{name:'นีโอก้า'},{name:'บอส ฟาร์มาแคร์ (ยาไทย)'},{name:'บัณโก'},{name:'บางกอกแล็ป แอนด์ คอสเมติค'},{name:'บี เมด ฟาร์มาซูติคอล'},{name:'บี.เอ็ม'},{name:'บี.เอ็ล.ฮั้ว'},{name:'บี.เอ็ล.เอช. เทรดดิ้ง'},{name:'บุคคโล'},{name:'บุญส่งโอสถ'},{name:'บูรพาโอสถ'},{name:'ประสงค์เภสัช'},{name:'ปัจจุบันโอสถ'},{name:'ปิยะพนธ์ (มาราธอน)'},{name:'ผงพิเศษตราร่มชูชีพ'},{name:'พยาบาล'},{name:'พรอส ฟาร์มา'},{name:'พรีเวนทีฟ'},{name:'พัฒนาการเภสัช'},{name:'พาร์ตาแลบ (2517)'},{name:'พิคโก้ฟาร์มา'},{name:'พี.ยูนีไทย'},{name:'พีดีแอล'},{name:'พีพีเอ็ม (PPM)'},{name:'พีเอ็มแอล (ฟาร์มาแลนด์)'},{name:'ฟาร์มาสแควร์'},{name:'ฟาร์ม่าไลน์'},{name:'ฟีฮาแลบ'},{name:'มัณฑนา มาร์เก็ตติ้ง'},{name:'มาซ่าแลป'},{name:'ยันฮี'},{name:'ยาตราพระราม'},{name:'ยูนีซัน'},{name:'ยูเนี่ยนเมดิคอล'},{name:'ยูเมด้า'},{name:'ลองเมด'},{name:'ลิงถือลูกท้อ'},{name:'ลิตเติ้ล ฮาร์ท'},{name:'ลี้้บ้วนซัว ดิสเปนซารี่(ห้างเก่า)'},{name:'วายไอเอ แมเนชเมนท์ (YIA-คุณเปรมา)'},{name:'วิจารณ์เภสัช'},{name:'วิทยาศรม สาขา 5'},{name:'วิทูรเภสัช'},{name:'วิริยะ เมดิคอล'},{name:'วิริยะพานิช'},{name:'วิเศษนิยม'},{name:'ศรีจันทร์โอสถ'},{name:'ส.สุพรรณ'},{name:'ส.เจริญ เภสัช'},{name:'สมศักดิ์เภสัช (โคเทียมเกวียน)'},{name:'สมุนไพรคงคา'},{name:'สมุนไพรตราหมอจุฬา'},{name:'สมุนไพรภูหลวง'},{name:'สยาม ฟาร์มาซูติคอล'},{name:'สยามไทธัส'},{name:'สหแพทย์เภสัช'},{name:'สัมมิท คอร์เปเรชั่น'},{name:'สามัคคีเภสัช'},{name:'หงส์ไทย'},{name:'หมอมี'},{name:'หมอยาไทย'},{name:'หมิ่นเพียว'},{name:'หาญไทย'},{name:'ห้าตะขาบ'},{name:'ห้าม้าโอสถ'},{name:'ห้าเจดีย์'},{name:'องค์การเภสัชกรรม'},{name:'อาร์เอ็กซ์ แมนูแฟคเจอริ่ง'},{name:'อุดมนิจ'},{name:'อุยเฮง'},{name:'อ้วยอันโอสถ'},{name:'ฮีโร่มัยซิน ฟาร์ม่า'},{name:'ฮุยแลนด์'},{name:'เกร็กคู'},{name:'เกร็ทเตอร์ฟาร์ม่า'},{name:'เกียรติทวี (เช็ง เช็ง อิ้ว)'},{name:'เค.ที.วี'},{name:'เจ เอส วิชั่น'},{name:'เจริญสุข'},{name:'เจ็ดดาว'},{name:'เซ็นทรัลโพลี่'},{name:'เซ่งหลีโอสถ'},{name:'เทพประทานพร'},{name:'เทวกรรมโอสถ'},{name:'เบอร์ลิน ฟาร์มาซูติคอล'},{name:'เบอร์แทรม'},{name:'เพรซิเดนท์ อินเตอร์ ฟาร์มา'},{name:'เพ็ญภาค'},{name:'เฟรนชิป'},{name:'เภสัชกรรมศรีประสิทธิ์'},{name:'เมดซินโนว่า'},{name:'เมดเมเกอร์'},{name:'เมดไลน์'},{name:'เยนเนอร์ราลดรั๊กเฮ้าส์'},{name:'เยาวราช'},{name:'เยเนอรัล ออสปิตัล โปรดักส์'},{name:'เลิศสิงห์เภสัชกรรม'},{name:'เวชพงศ์โอสถ'},{name:'เวชภัณฑ์ ป๊อก กาโน่'},{name:'เสือ 11 ตัว'},{name:'เสือมังกร'},{name:'เหลืองเวชภัณฑ์'},{name:'เอ.เอ็น.บี ลาบอราตอรี่'},{name:'เอกไพศาล'},{name:'เอช.ไอ.พี (HIP)'},{name:'เอชจีเค ฟาร์มาซูติคอล'},{name:'เอชเค เมดิซีน'},{name:'เอซีอี โกลบอล (ACE Global)'},{name:'เอฟ.ซี.พี (FCP)'},{name:'เอส.เอส.พี (SSP)'},{name:'เอาร์อาร์'},{name:'เอเชี่ยน ฟาร์มาซูติคอล'},{name:'เอเชี่ยน ยูเนี่ยน (ASIAN UNION)'},{name:'เอเซียโอสถ (ไดน่าฟู้ด)'},{name:'เอเอ็นพีเอส (ANPS)'},{name:'เอเอ็มเค เมดิคอล'},{name:'เอ็งจีนฮั่วเฮง'},{name:'เฮลท์ อิมแพค'},{name:'แก้วมังกรเภสัช'},{name:'แคนตั้น เมดิแคร์'},{name:'แคสป้า ฟาร์มาซูติคอล (ประเทศไทย)'},{name:'แปซิฟิค เฮลธ์แคร์ (ไทยแลนด์)'},{name:'แมคโครฟาร์'},{name:'แมส มาร์เก็ตติ้ง'},{name:'แสงชัยเภสัช'},{name:'แสงฟ้า'},{name:'แสงรัศมี (SRM pharma)'},{name:'แสงไทย'},{name:'แหลมทอง การแพทย์'},{name:'แอตว๊านซ์ (ซองซิป)'},{name:'แอล.บี.เอส แลบบอเรตอรี่'},{name:'แอโรแคร์ (อินแพค)'},{name:'โกลด์ครอส (กากบาททอง)'},{name:'โชคชัย'},{name:'โปลิฟาร์ม'},{name:'โป๊ยเซียน'},{name:'โมเดิร์น ฟาร์ม่า'},{name:'โรงงานเภสัชกรรมแอตแลนติค'},{name:'โรต้าลาบอเร็ทตอรี่ส์'},{name:'โรยัล ดรักส์'},{name:'โอสถยังตัง'},{name:'โอเร็กซ์ เทรดดิ้ง'},{name:'ใบโพธิ์'},{name:'ไทยนครพัฒนา - แผนก 1 - ทิฟฟี่'},{name:'ไทยนครพัฒนา - แผนก 2 - แอนตาซิล'},{name:'ไทยนครพัฒนา - แผนก 3 - เบนด้า'},{name:'ไทยนครพัฒนา - แผนก 4 - นีโอติก้า'},{name:'ไทยนครพัฒนา - แผนก 5 - พรีมโนบุ'},{name:'ไทยเวชการ'},{name:'ไทยแลนด์ ฟาร์มาซี (นาสิก)'},{name:'ไบร์วู้ดฟาร์มาซูติคอล'},{name:'ไบโอจินีเทค'},{name:'ไบโอฟาร์ม (Biopharm)'},{name:'DKLL - Exeltis'},{name:'DKLL - Ranbaxy'},{name:'DKLL - อังกฤษตรางู'},{name:'DKSH - Alinamin'},{name:'DKSH - Alkon'},{name:'DKSH - Bausch & lomb (Renu)'},{name:'DKSH - Bayer (CDR)'},{name:'DKSH - Bayer (Yasmin)'},{name:'DKSH - Convatec'},{name:'DKSH - Hirudoid'},{name:'DKSH - Johnson&Johnson (tylenol)'},{name:'DKSH - LEO (Fucidene)'},{name:'DKSH - LEO (เสือดาว)'},{name:'DKSH - Loreal'},{name:'DKSH - Nestle'},{name:'DKSH - Omron'},{name:'DKSH - Opella (ไบโซลวอน)'},{name:'DKSH - Roche (Accuchek)'},{name:'DKSH - Sanofi (Depakine)'},{name:'DKSH - SM (Fluimucil)'},{name:'DKSH - SMART (Cavilon)'},{name:'DKSH - Smecta'},{name:'DKSH - Smith&nephew'},{name:'DKSH - Stada (Kamistad)'},{name:'DKSH - Taisho (Counterpain)'},{name:'DKSH - TRB'},{name:'DKSH - Vicks'},{name:'DKSH - ตราเสือ'},{name:'DKSH - ศิริบัญชา'},{name:'DKSH - โอสถสภา'},{name:'DKSH -โอสถอินเตอร์'},{name:'ZPL - Abbott (Ensure)'},{name:'ZPL - Abbott (Serc)'},{name:'ZPL - GED (Decolgen)'},{name:'ZPL - GSK'},{name:'ZPL - Haleon'},{name:'ZPL - Inova (norgesic)'},{name:'ZPL - M1 (thai-otsuka)'},{name:'ZPL - M2 (นกแก้ว)'},{name:'ZPL - M3 (Regelle)'},{name:'ZPL - M4 (Zithromax)'},{name:'ZPL - Mega'},{name:'ZPL - Menarini (Dermatix)'},{name:'ZPL - Menarini (Kamillosan)'},{name:'ZPL - Organon (Marvelon)'},{name:'ZPL - Perskindol'},{name:'ZPL - Sandoz'},{name:'ZPL - Viatris (Pfizer)'},{name:'ZPL - แจ็กเจี่ย'}];
+
+let drugs=[],returns=[],sigDrawing=false,sigHasContent=false,activeCombo=null;
+let returnedSet=new Set();
+
 function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5);}
 function fmtM(v){return(v||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtD(d){if(!d)return'-';try{return new Date(d).toLocaleDateString('th-TH',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return d;}}
 function fmtDT(d){if(!d)return'-';try{const dt=new Date(d);return dt.toLocaleDateString('th-TH',{day:'2-digit',month:'short',year:'numeric'})+' '+dt.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});}catch(e){return d;}}
-function setGs(t,m){G('gsStatus').className='gs-st gs-'+t;G('gsStatus').textContent=m;}
-function isRet(id){if(!id)return false;if(retSet.has(id))return true;const d=drugs.find(x=>x.id===id);return d?d.status==='returned':false;}
+function setGs(t,m){const el=document.getElementById('gsStatus');el.className='gs-st gs-'+t;el.textContent=m;}
 
-function gp(p){
+function isReturned(id){
+  if(!id)return false;
+  if(returnedSet.has(id))return true;
+  const d=drugs.find(x=>x.id===id);
+  return d?d.status==='returned':false;
+}
+
+function initCombo(){
+  const sel=document.getElementById('drugCompany');
+  COMPANIES.forEach(c=>{
+    const o=document.createElement('option');o.value=c.name;o.textContent=c.name;
+    sel.appendChild(o);
+  });
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.combo-wrap')){document.querySelectorAll('.combo-list').forEach(l=>l.classList.remove('open'));activeCombo=null;}});
+
+/* บริษัทที่มียา pending และยังไม่อยู่ใน returnedSet */
+function pendingCompanies(){
+  return[...new Set(drugs.filter(d=>d.status==='pending'&&!returnedSet.has(d.id)).map(d=>d.company))].sort();
+}
+function returnedCompanies(){return[...new Set(returns.map(r=>r.company))].sort();}
+function rebuildReturnSel(){const s=document.getElementById('returnCompany'),c=s.value;s.innerHTML='<option value="">— เลือกบริษัท —</option>';pendingCompanies().forEach(co=>{const o=document.createElement('option');o.value=co;o.textContent=co;if(co===c)o.selected=true;s.appendChild(o);});}
+function rebuildHistorySel(){const s=document.getElementById('filterCompany'),c=s.value;s.innerHTML='<option value="">บริษัท (ทั้งหมด)</option>';returnedCompanies().forEach(co=>{const o=document.createElement('option');o.value=co;o.textContent=co;if(co===c)o.selected=true;s.appendChild(o);});}
+
+const canvas=document.getElementById('sigCanvas');
+const ctx=canvas.getContext('2d');
+ctx.strokeStyle='#1D9E75';ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';
+function resizeCanvas(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=155;}
+function getPos(e){const r=canvas.getBoundingClientRect(),cl=e.touches?e.touches[0]:e;return{x:(cl.clientX-r.left)*(canvas.width/r.width),y:(cl.clientY-r.top)*(canvas.height/r.height)};}
+canvas.addEventListener('mousedown',e=>{sigDrawing=true;const p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});
+canvas.addEventListener('mousemove',e=>{if(!sigDrawing)return;const p=getPos(e);ctx.lineTo(p.x,p.y);ctx.stroke();sigHasContent=true;document.getElementById('sigHint').style.display='none';});
+canvas.addEventListener('mouseup',()=>sigDrawing=false);canvas.addEventListener('mouseleave',()=>sigDrawing=false);
+canvas.addEventListener('touchstart',e=>{e.preventDefault();sigDrawing=true;const p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);},{passive:false});
+canvas.addEventListener('touchmove',e=>{e.preventDefault();if(!sigDrawing)return;const p=getPos(e);ctx.lineTo(p.x,p.y);ctx.stroke();sigHasContent=true;document.getElementById('sigHint').style.display='none';},{passive:false});
+canvas.addEventListener('touchend',()=>sigDrawing=false);
+function clearSig(){ctx.clearRect(0,0,canvas.width,canvas.height);sigHasContent=false;document.getElementById('sigHint').style.display='block';}
+function calcTotal(){const q=parseFloat(document.getElementById('drugQty').value)||0,p=parseFloat(document.getElementById('drugPrice').value)||0;document.getElementById('drugTotal').textContent=(q*p).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท';}
+
+function switchPage(p){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
-  G('page-'+p).classList.add('active');G('tab-'+p).classList.add('active');
-  if(p==='return'){G('retDate').value=new Date().toISOString().slice(0,10);rebuildRetSel();loadRetDrugs();}
-  if(p==='history'){rebuildHistSel();renderHistory();}
-  setTimeout(resizeCvs,100);
+  document.getElementById('page-'+p).classList.add('active');
+  document.getElementById('tab-'+p).classList.add('active');
+  document.getElementById('gs-bar-wrap').style.display='block';
+  if(p==='return'){document.getElementById('returnDate').value=new Date().toISOString().slice(0,10);rebuildReturnSel();filterReturnDrugs();}
+  if(p==='history'){rebuildHistorySel();renderHistory();}
+  if(p==='pickup'){rebuildPickupSel();renderPickupList();}
+  setTimeout(resizeCanvas,50);
 }
-function alert2(id,msg,type){
-  G(id).innerHTML='<div class="alert al-'+type+'"><i class="ti ti-'+(type==='success'?'check':type==='info'?'info-circle':'alert-circle')+'" aria-hidden="true"></i>'+msg+'</div>';
-  if(type!=='info')setTimeout(()=>G(id).innerHTML='',4000);
+function showAlert(id,msg,type){
+  const el=document.getElementById(id);
+  el.innerHTML='<div class="alert al-'+type+'"><i class="ti ti-'+(type==='success'?'check':type==='info'?'info-circle':'alert-circle')+'"></i>'+msg+'</div>';
+  if(type!=='info')setTimeout(()=>el.innerHTML='',4000);
 }
 
-/* ── company helpers ── */
-function pendComp(){return[...new Set(drugs.filter(d=>d.status==='pending'&&!retSet.has(d.id)).map(d=>d.company))].sort();}
-function retComp(){return[...new Set(returns.map(r=>r.company))].sort();}
-function rebuildRetSel(){const s=G('retCompany'),c=s.value;s.innerHTML='<option value="">— เลือกบริษัท —</option>';pendComp().forEach(co=>{const o=document.createElement('option');o.value=co;o.textContent=co;if(co===c)o.selected=true;s.appendChild(o);});}
-function rebuildHistSel(){const s=G('fCo'),c=s.value;s.innerHTML='<option value="">บริษัท</option>';retComp().forEach(co=>{const o=document.createElement('option');o.value=co;o.textContent=co;if(co===c)o.selected=true;s.appendChild(o);});}
-
-/* ── canvas sig ── */
-const cvs=G('sigCanvas'),ctx=cvs.getContext('2d');
-ctx.strokeStyle='#1D9E75';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
-function resizeCvs(){cvs.width=cvs.parentElement.offsetWidth;cvs.height=150;}
-function getP(e){const r=cvs.getBoundingClientRect();const cl=e.touches?e.touches[0]:e;return{x:(cl.clientX-r.left)*(cvs.width/r.width),y:(cl.clientY-r.top)*(cvs.height/r.height)};}
-cvs.addEventListener('mousedown',e=>{sigDraw=true;const p=getP(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});
-cvs.addEventListener('mousemove',e=>{if(!sigDraw)return;const p=getP(e);ctx.lineTo(p.x,p.y);ctx.stroke();sigOK=true;G('sigHint').style.display='none';});
-cvs.addEventListener('mouseup',()=>sigDraw=false);cvs.addEventListener('mouseleave',()=>sigDraw=false);
-cvs.addEventListener('touchstart',e=>{e.preventDefault();sigDraw=true;const p=getP(e);ctx.beginPath();ctx.moveTo(p.x,p.y);},{passive:false});
-cvs.addEventListener('touchmove',e=>{e.preventDefault();if(!sigDraw)return;const p=getP(e);ctx.lineTo(p.x,p.y);ctx.stroke();sigOK=true;G('sigHint').style.display='none';},{passive:false});
-cvs.addEventListener('touchend',e=>{e.preventDefault();sigDraw=false;},{passive:false});
-function clearSig(){ctx.clearRect(0,0,cvs.width,cvs.height);sigOK=false;G('sigHint').style.display='block';}
-function calcTotal(){const q=parseFloat(G('dQty').value)||0,p=parseFloat(G('dPrice').value)||0;G('dTotal').textContent=(q*p).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท';}
-
-/* ── SAVE DRUG ── */
 function saveDrug(){
-  const name=G('dName').value.trim(),company=G('dCompany').value,expiry=G('dExpiry').value;
-  const qty=parseInt(G('dQty').value),price=parseFloat(G('dPrice').value);
-  if(!name||!company||!expiry||!qty||isNaN(price)){alert2('ar','กรุณากรอกข้อมูลที่จำเป็น (*)','error');return;}
+  const name=document.getElementById('drugName').value.trim(),company=document.getElementById('drugCompany').value.trim();
+  const expiry=document.getElementById('drugExpiry').value,qty=parseInt(document.getElementById('drugQty').value),price=parseFloat(document.getElementById('drugPrice').value);
+  if(!name||!company||!expiry||!qty||isNaN(price)){showAlert('alert-record','กรุณากรอกข้อมูลที่จำเป็น (*)','error');return;}
   const id=genId();
-  const drug={id,name,company,lot:G('dLot').value.trim(),expiry,qty,unit:G('dUnit').value,price,total:qty*price,recorder:G('dRecorder').value.trim(),note:G('dNote').value.trim(),recordedAt:new Date().toISOString(),status:'pending'};
-  drugs.push(drug);save();
-  post('drugs',DH,[drug.recordedAt.slice(0,10),drug.name,drug.company,drug.lot,drug.expiry,drug.qty,drug.unit,drug.price,drug.total,drug.recorder,drug.note,'pending',id]);
-  clearForm();rebuildRetSel();
-  alert2('ar','บันทึกยาสำเร็จ: '+name,'success');
+  const drug={id,name,company,lot:document.getElementById('drugLot').value.trim(),expiry,qty,unit:document.getElementById('drugUnit').value,price,total:qty*price,recorder:document.getElementById('drugRecorder').value.trim(),note:document.getElementById('drugNote').value.trim(),recordedAt:new Date().toISOString(),status:'pending'};
+  drugs.push(drug);saveLocal();
+  postSheet('drugs',DRUGS_H,[drug.recordedAt.slice(0,10),drug.name,drug.company,drug.lot,drug.expiry,drug.qty,drug.unit,drug.price,drug.total,drug.recorder,drug.note,'pending',id]);
+  clearForm();rebuildReturnSel();
+  showAlert('alert-record','บันทึกยาสำเร็จ: '+name,'success');
 }
 function clearForm(){
-  ['dName','dLot','dExpiry','dQty','dPrice','dRecorder','dNote'].forEach(i=>G(i).value='');
-  G('dCompany').value='';G('dUnit').selectedIndex=0;G('dTotal').textContent='0.00 บาท';
+  ['drugName','drugLot','drugExpiry','drugQty','drugPrice','drugRecorder','drugNote'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('drugUnit').selectedIndex=0;document.getElementById('drugCompany').selectedIndex=0;document.getElementById('drugTotal').textContent='0.00 บาท';
 }
 
-/* ── RETURN PAGE ── */
-function loadRetDrugs(){
-  const co=G('retCompany').value;
-  const note=G('retNote'),el=G('retDrugList');
-  if(!co){note.textContent='';el.innerHTML='<div class="empty"><i class="ti ti-building-store" aria-hidden="true"></i>เลือกบริษัทก่อน</div>';return;}
-  const avail=drugs.filter(d=>d.status==='pending'&&d.company===co&&!retSet.has(d.id));
-  if(!avail.length){note.textContent='';el.innerHTML='<div class="empty"><i class="ti ti-inbox" aria-hidden="true"></i>ไม่มีรายการยาที่รอส่งคืน</div>';return;}
+function filterReturnDrugs(){
+  const co=document.getElementById('returnCompany').value;
+  const note=document.getElementById('returnListNote');
+  const el=document.getElementById('return-drug-list');
+  if(!co){note.textContent='';el.innerHTML='<div class="empty"><i class="ti ti-building-store"></i>เลือกบริษัทก่อน</div>';return;}
+  const avail=drugs.filter(d=>d.status==='pending'&&d.company===co&&!returnedSet.has(d.id));
+  if(!avail.length){note.textContent='';el.innerHTML='<div class="empty"><i class="ti ti-inbox"></i>ไม่มีรายการยาของบริษัทนี้ที่รอส่งคืน</div>';return;}
   note.textContent='('+avail.length+' รายการ)';
-
-  /* label ครอบ input[type=checkbox] ทั้งหมด — iOS กดได้แน่นอน ไม่ต้องใช้ JS */
-  let html='<label class="chk-all-lbl" for="chkAll"><input type="checkbox" id="chkAll" onchange="toggleAll(this.checked)">เลือกทั้งหมด</label>';
-  html+='<div class="chk-list">';
-  avail.forEach(d=>{
-    html+=`<label class="chk-lbl" for="chk_${d.id}">
-      <input type="checkbox" id="chk_${d.id}" class="dchk" value="${d.id}">
-      <div class="chk-info">
-        <div class="chk-name">${d.name}</div>
-        <div class="chk-sub">หมดอายุ ${fmtD(d.expiry)} · ${d.qty} ${d.unit}</div>
-      </div>
-      <div class="chk-val">${fmtM(d.total)} บาท</div>
-    </label>`;
-  });
-  html+='</div>';
-  el.innerHTML=html;
+  el.innerHTML='<table class="dtable"><thead><tr><th style="width:32px"><input type="checkbox" id="chkAll" onchange="toggleAll(this)"></th><th style="width:30%">ชื่อยา</th><th style="width:16%">Lot No.</th><th style="width:15%">หมดอายุ</th><th style="width:13%">จำนวน</th><th>มูลค่ารวม</th></tr></thead><tbody>'+
+    avail.map(d=>'<tr><td><input type="checkbox" class="drug-chk" value="'+d.id+'"></td><td>'+d.name+'</td><td>'+(d.lot||'-')+'</td><td>'+fmtD(d.expiry)+'</td><td>'+d.qty+' '+d.unit+'</td><td>'+fmtM(d.total)+'</td></tr>').join('')+
+  '</tbody></table>';
 }
-function toggleAll(v){document.querySelectorAll('.dchk').forEach(c=>c.checked=v);}
+function toggleAll(el){document.querySelectorAll('.drug-chk').forEach(c=>c.checked=el.checked);}
 
-/* ── SUBMIT RETURN ── */
-function submitReturn(){
-  const sel=[...document.querySelectorAll('.dchk:checked')].map(c=>c.value);
-  const co=G('retCompany').value,recv=G('retReceiver').value.trim();
-  const rType=document.querySelector('input[name="rType"]:checked')?.value||'เปลี่ยนสินค้า';
-  if(!sel.length){alert2('aRet','กรุณาเลือกรายการยา','error');return;}
-  if(!co||!recv){alert2('aRet','กรุณากรอกชื่อบริษัทและผู้รับคืน','error');return;}
-  if(!sigOK){alert2('aRet','กรุณาวาดลายเซ็น','error');return;}
-  const dupes=sel.filter(id=>isRet(id));
-  if(dupes.length){alert2('aRet','มีรายการที่รับคืนไปแล้ว กรุณากด "ดึงข้อมูล"','error');return;}
-  const sig=cvs.toDataURL('image/png');
-  const rd=drugs.filter(d=>sel.includes(d.id));
-  const total=rd.reduce((s,d)=>s+(d.total||0),0);
+async function submitReturn(){
+  const selected=[...document.querySelectorAll('.drug-chk:checked')].map(c=>c.value);
+  const company=document.getElementById('returnCompany').value,receiver=document.getElementById('returnReceiverName').value.trim();
+  const returnType=document.querySelector('input[name="returnType"]:checked')?.value||'เปลี่ยนสินค้า';
+  if(!selected.length){showAlert('alert-return','กรุณาเลือกรายการยา','error');return;}
+  if(!company||!receiver){showAlert('alert-return','กรุณากรอกชื่อบริษัทและผู้แทนบริษัท','error');return;}
+  if(!sigHasContent){showAlert('alert-return','กรุณาวาดลายเซ็น','error');return;}
+  const dupes=selected.filter(id=>isReturned(id));
+  if(dupes.length){showAlert('alert-return','มีรายการที่ถูกรับคืนไปแล้ว กรุณากด "ดึงข้อมูล"','error');return;}
+  const sigData=canvas.toDataURL('image/png');
+  const rdrugs=drugs.filter(d=>selected.includes(d.id));
+  const totalVal=rdrugs.reduce((s,d)=>s+(d.total||0),0);
+  const pickupMethod=document.querySelector('input[name="pickupMethod"]:checked')?.value||'self';
   const recId=genId(),ts=new Date().toISOString();
-  const rec={id:recId,returnDate:G('retDate').value,company:co,receiver:recv,phone:G('retPhone').value.trim(),returnType:rType,
-    drugs:rd.map(d=>({id:genId(),drugId:d.id,name:d.name,lot:d.lot||'',qty:d.qty,unit:d.unit,expiry:d.expiry,price:d.price,total:d.total,company:d.company,compStatus:'ยังไม่ชดเชย',compAmount:0,compDate:'',compConfirmed:false,editing:false,log:[{ts,event:'รับคืนสินค้า',detail:'บันทึก '+d.qty+' '+d.unit+' มูลค่า '+fmtM(d.total)+' บาท'}]})),
-    totalValue:total,signature:sig,createdAt:ts,cancelled:false};
+  const rec={id:recId,returnDate:document.getElementById('returnDate').value,company,receiver,phone:document.getElementById('returnPhone').value.trim(),returnType,pickupMethod,pickupStatus:'pending',pickupReceiver:'',pickupDate:'',note:document.getElementById('returnNote').value.trim(),
+    drugs:rdrugs.map(d=>({id:genId(),drugId:d.id,name:d.name,lot:d.lot||'',qty:d.qty,unit:d.unit,expiry:d.expiry,price:d.price,total:d.total,company:d.company,compStatus:'ยังไม่ชดเชย',compAmount:0,compDate:'',compConfirmed:false,editing:false,log:[{ts,event:'รับคืนสินค้า',detail:'บันทึก '+d.qty+' '+d.unit+' มูลค่า '+fmtM(d.total)+' บาท'}]})),
+    totalValue:totalVal,signature:sigData,sigUrl:'',createdAt:ts,cancelled:false};
+  // กำหนด pickupStatus ตั้งแต่ต้น: self=done, truck=pending
+  rec.pickupStatus = pickupMethod==='self' ? 'done' : 'pending';
   returns.push(rec);
-  rd.forEach(d=>{const dg=drugs.find(x=>x.id===d.id);if(dg)dg.status='returned';retSet.add(d.id);});
-  save();
-  rec.drugs.forEach(d=>{post('returns',RH,[recId,rec.returnDate,co,recv,rec.phone,rType,d.name,d.lot,d.qty,d.unit,d.expiry,d.price,d.total,total,'ยังไม่ชดเชย',0,'','','',d.drugId,'','active']);});
-  rd.forEach(d=>{post('drugs',null,[d.id,'returned'],'updateDrugStatus');});
-  G('retReceiver').value='';G('retPhone').value='';
-  G('rtEx').checked=true;
-  clearSig();rebuildRetSel();G('retCompany').value='';loadRetDrugs();
-  alert2('aRet','บันทึกการรับคืนสำเร็จ ('+rType+')','success');
+  saveSig(recId,sigData);
+  rdrugs.forEach(d=>{const dg=drugs.find(x=>x.id===d.id);if(dg)dg.status='returned';returnedSet.add(d.id);});
+  saveLocal();
+  // อัปโหลดลายเซ็นไป Google Drive
+  showAlert('alert-return','กำลังบันทึกลายเซ็น...','info');
+  let sigUrl='';
+  try{
+    const b64=sigData.split(',')[1];
+    const res=await fetch(GAS,{method:'POST',body:JSON.stringify({action:'saveSignature',retId:recId,base64:b64,filename:'sig_'+recId+'.png'})});
+    const json=await res.json();
+    if(json&&json.url){sigUrl=json.url;rec.sigUrl=sigUrl;saveLocal();}
+  }catch(e){console.warn('sig upload failed',e);}
+  // บันทึก row ลง Sheet พร้อม sigUrl
+  rec.drugs.forEach(d=>{postSheet('returns',RETURNS_H,[recId,rec.returnDate,rec.company,rec.receiver,rec.phone,rec.returnType,d.name,d.lot,d.qty,d.unit,d.expiry,d.price,d.total,totalVal,'ยังไม่ชดเชย',0,'',sigUrl,'',d.drugId,'','active',rec.pickupMethod,rec.pickupStatus,'','']);});
+  rdrugs.forEach(d=>{postSheet('drugs',null,[d.id,'returned'],'updateDrugStatus');});
+  ['returnReceiverName','returnPhone','returnNote'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('rtExchange').checked=true;
+  document.getElementById('pmSelf').checked=true;
+  clearSig();rebuildReturnSel();document.getElementById('returnCompany').value='';filterReturnDrugs();
+  const doneMsg='บันทึกการรับคืนสำเร็จ'+(sigUrl?' (บันทึกลายเซ็นแล้ว)':' (ลายเซ็นเก็บใน Cache)');
+  if(pickupMethod==='truck'){
+    showAlert('alert-return',doneMsg+' · ส่งไปยังหน้าสินค้ารอรถมารับแล้ว','success');
+    setTimeout(()=>switchPage('pickup'),800);
+  } else {
+    showAlert('alert-return',doneMsg,'success');
+    setTimeout(()=>switchPage('history'),800);
+  }
 }
 
-/* ── CANCEL RETURN ── */
-function cancelReturn(retId){
+async function cancelReturn(retId){
   const r=returns.find(x=>x.id===retId);if(!r||r.cancelled)return;
+  // ถ้ารอรถมารับและรับไปแล้ว → reset กลับรอรถมารับใหม่ (ไม่ยกเลิกทั้งใบ)
+  if(r.pickupMethod==='truck'&&r.pickupStatus==='done'){
+    if(!confirm('ยืนยันคืนสถานะ "รอรถมารับ" สำหรับสินค้านี้?'))return;
+    r.pickupStatus='pending';r.pickupReceiver='';r.pickupDate='';
+    saveLocal();
+    postSheet('returns',null,[retId,'',''],'updatePickup');
+    rebuildPickupSel();
+    renderHistory();rebuildHistorySel();
+    showAlert('alert-record','รีเซ็ตสถานะเป็น "รอรถมารับ" แล้ว','info');
+    return;
+  }
   if(!confirm('ยืนยันยกเลิกการรับคืนสินค้านี้?'))return;
-  const ts=new Date().toISOString();r.cancelled=true;r.cancelledAt=ts;
-  r.drugs.forEach(d=>{const dg=drugs.find(x=>x.id===d.drugId);if(dg)dg.status='pending';retSet.delete(d.drugId);(d.log=d.log||[]).push({ts,event:'ยกเลิกรับคืน',detail:'ยกเลิกใบรับคืน'});});
-  save();post('returns',null,[retId,'cancelled'],'cancelReturn');
-  r.drugs.forEach(d=>{post('drugs',null,[d.drugId,'pending'],'updateDrugStatus');});
-  renderHistory();rebuildHistSel();rebuildRetSel();loadRetDrugs();
-  alert2('ar','ยกเลิกการรับคืนแล้ว รายการยากลับสู่สถานะรอส่งคืน','info');
+  const ts=new Date().toISOString();
+  r.cancelled=true;r.cancelledAt=ts;
+  r.drugs.forEach(d=>{
+    const dg=drugs.find(x=>x.id===d.drugId);
+    if(dg)dg.status='pending';
+    returnedSet.delete(d.drugId);
+    (d.log=d.log||[]).push({ts,event:'ยกเลิกรับคืน',detail:'ยกเลิกใบรับคืน'});
+  });
+  saveLocal();
+  postSheet('returns',null,[retId,'cancelled'],'cancelReturn');
+  r.drugs.forEach(d=>{postSheet('drugs',null,[d.drugId,'pending'],'updateDrugStatus');});
+  renderHistory();rebuildHistorySel();
+  rebuildReturnSel();
+  filterReturnDrugs();
+  showAlert('alert-record','ยกเลิกการรับคืนแล้ว รายการยากลับสู่สถานะรอส่งคืน','info');
 }
 
-/* ── COMP ── */
+// ─── หน้าสินค้ารอรถมารับ ───
+function pickupPendingCompanies(){
+  // บริษัทที่มี return ที่ pickupMethod=truck และ pickupStatus=pending
+  return[...new Set(
+    returns.filter(r=>!r.cancelled&&r.pickupMethod==='truck'&&r.pickupStatus==='pending')
+    .map(r=>r.company)
+  )].sort();
+}
+function rebuildPickupSel(){
+  const s=document.getElementById('pickupCompany'),c=s.value;
+  s.innerHTML='<option value="">— เลือกบริษัท —</option>';
+  pickupPendingCompanies().forEach(co=>{
+    const o=document.createElement('option');o.value=co;o.textContent=co;
+    if(co===c)o.selected=true;s.appendChild(o);
+  });
+}
+function renderPickupList(){
+  const co=document.getElementById('pickupCompany').value;
+  const el=document.getElementById('pickup-list');
+  document.getElementById('pickup-confirm-box').style.display='none';
+  if(!co){el.innerHTML='<div class="empty"><i class="ti ti-truck-delivery"></i>เลือกบริษัทเพื่อดูรายการ</div>';return;}
+  const recs=returns.filter(r=>!r.cancelled&&r.company===co&&r.pickupMethod==='truck'&&r.pickupStatus==='pending');
+  if(!recs.length){el.innerHTML='<div class="empty"><i class="ti ti-circle-check"></i>ไม่มีสินค้ารอรถมารับสำหรับบริษัทนี้</div>';return;}
+  el.innerHTML=recs.map(r=>{
+    const drugList=r.drugs.map(d=>`<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:5px 0;border-bottom:1px solid #e8f5ee">
+      <span><i class="ti ti-pill" style="font-size:13px;color:#1D9E75;vertical-align:-1px"></i> ${d.name}${d.lot?' <span style="font-size:12px;color:#5a9a7a;background:#e1f5ee;border-radius:4px;padding:1px 6px">'+d.lot+'</span>':''}</span>
+      <span style="color:#3a7a5a;font-weight:500">${d.qty} ${d.unit} · ${fmtM(d.total)} บาท</span>
+    </div>`).join('');
+    return`<div class="pickup-item">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <div>
+          <span class="badge b-truck"><i class="ti ti-truck-delivery"></i>รอรถมารับ</span>
+          <span style="margin-left:8px;font-size:13px;color:#555"><i class="ti ti-calendar" style="font-size:13px;vertical-align:-1px"></i> ${fmtD(r.returnDate)}</span>
+        </div>
+        <div style="font-size:13px;color:#555"><i class="ti ti-user" style="font-size:13px;vertical-align:-1px"></i> ผู้รับคืน: <b>${r.receiver}</b>${r.phone?' · '+r.phone:''}</div>
+      </div>
+      <div style="margin-bottom:10px">${drugList}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span style="font-size:14px;font-weight:600;color:#085041">มูลค่ารวม: ${fmtM(r.totalValue)} บาท</span>
+        <button class="btn btn-primary btn-sm" onclick="openPickupConfirm('${r.id}')"><i class="ti ti-circle-check"></i>บันทึกรับสินค้ากลับ</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function openPickupConfirm(retId){
+  document.getElementById('pickupRetId').value=retId;
+  document.getElementById('pickupDate').value=new Date().toISOString().slice(0,10);
+  document.getElementById('pickupReceiver').value='';
+  document.getElementById('pickup-confirm-box').style.display='block';
+  document.getElementById('pickup-confirm-box').scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function confirmPickup(){
+  const retId=document.getElementById('pickupRetId').value;
+  const pickupReceiver=document.getElementById('pickupReceiver').value.trim();
+  const pickupDate=document.getElementById('pickupDate').value;
+  if(!pickupReceiver){showAlert('alert-pickup','กรุณากรอกชื่อคนมารับสินค้า','error');return;}
+  if(!pickupDate){showAlert('alert-pickup','กรุณาเลือกวันที่รับสินค้า','error');return;}
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  r.pickupStatus='done';r.pickupReceiver=pickupReceiver;r.pickupDate=pickupDate;
+  saveLocal();
+  // บันทึกลง Sheet
+  postSheet('returns',null,[retId,pickupReceiver,pickupDate],'updatePickup');
+  document.getElementById('pickup-confirm-box').style.display='none';
+  showAlert('alert-pickup','บันทึกการรับสินค้ากลับเรียบร้อย','success');
+  rebuildPickupSel();
+  // ถ้าบริษัทปัจจุบันไม่มีรายการเหลือให้ reset dropdown
+  const co=document.getElementById('pickupCompany').value;
+  if(!pickupPendingCompanies().includes(co))document.getElementById('pickupCompany').value='';
+  renderPickupList();
+}
+
 function compBadge(d){
-  if(d.compConfirmed&&d.compStatus==='ชดเชยทั้งหมด')return'<span class="badge b-green"><i class="ti ti-circle-check" aria-hidden="true"></i>ชดเชยทั้งหมด ✓</span>';
-  if(d.compStatus==='ชดเชยทั้งหมด')return'<span class="badge b-green"><i class="ti ti-check" aria-hidden="true"></i>ชดเชยทั้งหมด</span>';
-  if(d.compStatus==='ชดเชยบางส่วน')return'<span class="badge b-amber"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i>ชดเชยบางส่วน</span>';
-  return'<span class="badge b-red"><i class="ti ti-clock" aria-hidden="true"></i>ยังไม่ชดเชย</span>';
+  if(d.compConfirmed&&d.compStatus==='ชดเชยทั้งหมด')return'<span class="badge b-green"><i class="ti ti-circle-check"></i>ชดเชยทั้งหมด ✓</span>';
+  if(d.compStatus==='ชดเชยทั้งหมด')return'<span class="badge b-green"><i class="ti ti-check"></i>ชดเชยทั้งหมด</span>';
+  if(d.compStatus==='ชดเชยบางส่วน')return'<span class="badge b-amber"><i class="ti ti-adjustments-horizontal"></i>ชดเชยบางส่วน</span>';
+  return'<span class="badge b-red"><i class="ti ti-clock"></i>ยังไม่ชดเชย</span>';
 }
-function setComp(rId,dId,f,v){const r=returns.find(x=>x.id===rId);if(!r)return;const d=r.drugs.find(x=>x.id===dId);if(!d)return;if(f==='s')d.compStatus=v;else if(f==='a')d.compAmount=parseFloat(v)||0;else if(f==='d')d.compDate=v;save();}
-function confComp(rId,dId){
-  const r=returns.find(x=>x.id===rId);if(!r)return;const d=r.drugs.find(x=>x.id===dId);if(!d)return;
+function setComp(retId,dId,field,val){
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  const d=r.drugs.find(x=>x.id===dId);if(!d)return;
+  if(field==='status')d.compStatus=val;else if(field==='amount')d.compAmount=parseFloat(val)||0;else if(field==='date')d.compDate=val;
+  saveLocal();
+}
+function saveReturnNote(retId,val){
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  r.extraNote=val.trim();saveLocal();
+}
+function confirmComp(retId,dId){
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  const d=r.drugs.find(x=>x.id===dId);if(!d)return;
   if(d.compStatus==='ยังไม่ชดเชย'){alert('กรุณาเลือกสถานะชดเชยก่อนยืนยัน');return;}
+  if(d.compStatus==='ชดเชยบางส่วน'&&(!d.compAmount||d.compAmount<=0)){alert('กรุณากรอกจำนวนเงินที่ชดเชย');return;}
+  if(d.compStatus==='ชดเชยทั้งหมด')d.compAmount=d.total||0;
   if(!confirm('ยืนยันการชดเชยสินค้า "'+d.name+'" ?'))return;
-  const ts=new Date().toISOString();d.compConfirmed=true;d.editing=false;
-  (d.log=d.log||[]).push({ts,event:'ยืนยันชดเชย',detail:d.compStatus+' '+fmtM(d.compAmount)+' บาท'+(d.compDate?' วันที่ '+fmtD(d.compDate):'')});
-  save();post('returns',null,[rId,d.drugId,d.compStatus,d.compAmount,d.compDate,true],'updateCompInReturns');
-  renderHistory();rebuildHistSel();
+  const ts=new Date().toISOString();
+  d.compConfirmed=true;d.editing=false;
+  (d.log=d.log||[]).push({ts,event:'ยืนยันชดเชย',detail:d.compStatus+' จำนวน '+fmtM(d.compAmount)+' บาท'+(d.compDate?' วันที่ '+fmtD(d.compDate):'')});
+  saveLocal();
+  postSheet('returns',null,[retId,d.drugId,d.compStatus,d.compAmount,d.compDate,true],'updateCompInReturns');
+  renderHistory();rebuildHistorySel();
 }
-function editComp(rId,dId){const r=returns.find(x=>x.id===rId);if(!r)return;const d=r.drugs.find(x=>x.id===dId);if(!d)return;d.compConfirmed=false;d.editing=true;save();renderHistory();}
-function cancEdit(rId,dId){const r=returns.find(x=>x.id===rId);if(!r)return;const d=r.drugs.find(x=>x.id===dId);if(!d)return;d.compConfirmed=true;d.editing=false;save();renderHistory();}
+function editComp(retId,dId){
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  const d=r.drugs.find(x=>x.id===dId);if(!d)return;
+  d.compConfirmed=false;d.editing=true;saveLocal();renderHistory();
+}
+function cancelEditComp(retId,dId){
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  const d=r.drugs.find(x=>x.id===dId);if(!d)return;
+  d.compConfirmed=true;d.editing=false;saveLocal();renderHistory();
+}
 
-/* ── RENDER HISTORY ── */
 function renderHistory(){
-  const fD=G('fDrug').value.trim().toLowerCase(),fC=G('fCo').value,fT=G('fType').value,fCo=G('fComp').value,fCa=G('fCan').value;
+  const fD=document.getElementById('filterDrug').value.trim().toLowerCase();
+  const fC=document.getElementById('filterCompany').value,fT=document.getElementById('filterType').value;
+  const fCo=document.getElementById('filterComp').value,fCa=document.getElementById('filterCancel').value;
+  const fPk=document.getElementById('filterPickup').value;
   const filtered=[...returns].reverse().filter(r=>{
     if(fCa==='active'&&r.cancelled)return false;if(fCa==='cancelled'&&!r.cancelled)return false;
+    if(fPk==='self'&&r.pickupMethod!=='self')return false;
+    if(fPk==='truck_pending'&&!(r.pickupMethod==='truck'&&r.pickupStatus==='pending'))return false;
+    if(fPk==='truck_done'&&!(r.pickupMethod==='truck'&&r.pickupStatus==='done'))return false;
     return(!fC||r.company===fC)&&(!fT||r.returnType===fT)&&(!fD||r.drugs.some(d=>d.name.toLowerCase().includes(fD)))&&(!fCo||r.drugs.some(d=>d.compStatus===fCo));
   });
   const active=returns.filter(r=>!r.cancelled);
-  G('st-total').textContent=active.length;G('st-value').textContent=fmtM(active.reduce((s,r)=>s+(r.totalValue||0),0));
+  document.getElementById('stat-total').textContent=active.length;
+  document.getElementById('stat-value').textContent=fmtM(active.reduce((s,r)=>s+(r.totalValue||0),0));
   const allD=active.flatMap(r=>r.drugs);
-  G('st-done').textContent=allD.filter(d=>d.compConfirmed).length;G('st-none').textContent=allD.filter(d=>d.compStatus==='ยังไม่ชดเชย').length;
-  const el=G('histList');
-  if(!filtered.length){el.innerHTML='<div class="empty"><i class="ti ti-search" aria-hidden="true"></i>ไม่พบข้อมูล</div>';return;}
+  document.getElementById('stat-done').textContent=allD.filter(d=>d.compConfirmed).length;
+  document.getElementById('stat-none').textContent=allD.filter(d=>d.compStatus==='ยังไม่ชดเชย').length;
+  const el=document.getElementById('history-list');
+  if(!filtered.length){el.innerHTML='<div class="empty"><i class="ti ti-search"></i>ไม่พบข้อมูล</div>';return;}
   el.innerHTML=filtered.map(r=>{
     const isCan=r.cancelled;
-    const tBadge=r.returnType==='CN'?'<span class="badge b-purple"><i class="ti ti-receipt-refund" aria-hidden="true"></i>CN</span>':'<span class="badge b-blue"><i class="ti ti-arrows-exchange" aria-hidden="true"></i>เปลี่ยนสินค้า</span>';
+    const tBadge=r.returnType==='CN'?'<span class="badge b-purple"><i class="ti ti-receipt-refund"></i>CN</span>':'<span class="badge b-blue"><i class="ti ti-arrows-exchange"></i>เปลี่ยนสินค้า</span>';
+    const pickBadge=!r.pickupMethod?'':r.pickupMethod==='truck'?(r.pickupStatus==='done'?'<span class="badge b-green" style="font-size:12px"><i class="ti ti-truck-delivery"></i>รถรับแล้ว · '+(r.pickupDate?fmtD(r.pickupDate):'')+'</span>':'<span class="badge b-truck" style="font-size:12px"><i class="ti ti-truck-delivery"></i>รอรถมารับ</span>'):'<span class="badge b-gray" style="font-size:12px"><i class="ti ti-walk"></i>รับไปเอง</span>';
     const sD=fD?r.drugs.filter(d=>d.name.toLowerCase().includes(fD)):r.drugs;
     const cD=fCo?sD.filter(d=>d.compStatus===fCo):sD;
-    const dRows=isCan?'':cD.map(d=>{
+    const drugRows=isCan?'':cD.map(d=>{
       const isEdit=d.editing||false,isConf=d.compConfirmed&&!isEdit;
-      const lr=(d.log||[]).map(l=>{const dc=l.event==='รับคืนสินค้า'?'dot-created':l.event==='ยืนยันชดเชย'?'dot-confirmed':l.event==='ยกเลิกรับคืน'?'dot-cancelled':'dot-comp';return`<div class="log-row"><div class="log-dot ${dc}"></div><span style="flex-shrink:0">${fmtDT(l.ts)}</span><span style="font-weight:600">${l.event}</span><span>${l.detail}</span></div>`;}).join('');
-      return`<div class="comp-section"><div class="comp-header">
-        <div style="font-size:13px;font-weight:600">${d.name}<br><span style="font-weight:400;color:var(--color-text-secondary);font-size:12px">×${d.qty} ${d.unit} · ${fmtM(d.total)} บาท</span></div>
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">${compBadge(d)}${isConf?`<button class="btn btn-sm btn-info" onclick="editComp('${r.id}','${d.id}')"><i class="ti ti-edit" aria-hidden="true"></i>แก้ไข</button>`:''}</div></div>
-        ${isConf?`<div class="confirmed-info"><span><i class="ti ti-calendar" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> ${fmtD(d.compDate)||'-'}</span><span><i class="ti ti-currency-baht" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> ${fmtM(d.compAmount)} บาท</span></div>`:`
-        <div class="comp-fields">
-          <div class="fg"><label class="lbl">สถานะชดเชย</label><select onchange="setComp('${r.id}','${d.id}','s',this.value)"><option ${d.compStatus==='ยังไม่ชดเชย'?'selected':''}>ยังไม่ชดเชย</option><option ${d.compStatus==='ชดเชยบางส่วน'?'selected':''}>ชดเชยบางส่วน</option><option ${d.compStatus==='ชดเชยทั้งหมด'?'selected':''}>ชดเชยทั้งหมด</option></select></div>
-          <div class="fg"><label class="lbl">จำนวนที่ชดเชย (บาท)</label><input type="number" value="${d.compAmount||''}" placeholder="0.00" min="0" step="0.01" inputmode="decimal" onchange="setComp('${r.id}','${d.id}','a',this.value)"></div>
-          <div class="fg"><label class="lbl">วันที่ชดเชย</label><input type="date" value="${d.compDate||''}" onchange="setComp('${r.id}','${d.id}','d',this.value)"></div>
-        </div>
-        <div class="comp-row-bottom">${isEdit?`<button class="btn btn-sm" onclick="cancEdit('${r.id}','${d.id}')"><i class="ti ti-x" aria-hidden="true"></i>ยกเลิก</button>`:''}<button class="btn btn-sm btn-warning" onclick="confComp('${r.id}','${d.id}')"><i class="ti ti-circle-check" aria-hidden="true"></i>ยืนยันชดเชย</button></div>`}
-        ${lr?`<div style="margin-top:8px"><div style="font-size:12px;font-weight:600;color:var(--color-text-secondary);margin-bottom:5px;display:flex;align-items:center;gap:5px"><i class="ti ti-timeline" aria-hidden="true"></i>ประวัติ</div><div class="log-list">${lr}</div></div>`:''}</div>`;
+      const isPartial=d.compStatus==='ชดเชยบางส่วน';
+      const lotTag=d.lot?`<span style="font-size:12px;color:#3a7a5a;background:#e1f5ee;border-radius:5px;padding:2px 7px;font-weight:500"><i class="ti ti-tag" style="font-size:11px;vertical-align:-1px"></i> ${d.lot}</span>`:'';
+      const logRows=(d.log||[]).map(l=>{const dc=l.event==='รับคืนสินค้า'?'dot-created':l.event==='ยืนยันชดเชย'?'dot-confirmed':l.event==='ยกเลิกรับคืน'?'dot-cancelled':'dot-comp';return`<div class="log-row"><div class="log-dot ${dc}"></div><span style="flex-shrink:0;color:var(--color-text-tertiary)">${fmtDT(l.ts)}</span><span style="font-weight:500">${l.event}</span><span>${l.detail}</span></div>`;}).join('');
+      const compFields=isConf
+        ?`<div class="confirmed-info"><span><i class="ti ti-calendar" style="font-size:14px;vertical-align:-2px"></i> ${fmtD(d.compDate)||'-'}</span>${d.compStatus==='ชดเชยบางส่วน'?`<span><i class="ti ti-currency-baht" style="font-size:14px;vertical-align:-2px"></i> ${fmtM(d.compAmount)} บาท</span>`:''}</div>`
+        :`<div class="comp-fields" style="grid-template-columns:${isPartial?'1fr 1fr 1fr':'1fr 1fr'}"><div class="fg"><label>สถานะชดเชย</label><select onchange="setComp('${r.id}','${d.id}','status',this.value);renderHistory()"><option ${d.compStatus==='ยังไม่ชดเชย'?'selected':''}>ยังไม่ชดเชย</option><option ${d.compStatus==='ชดเชยบางส่วน'?'selected':''}>ชดเชยบางส่วน</option><option ${d.compStatus==='ชดเชยทั้งหมด'?'selected':''}>ชดเชยทั้งหมด</option></select></div>${isPartial?`<div class="fg"><label>จำนวนที่ชดเชย (บาท)</label><input type="number" value="${d.compAmount||''}" placeholder="0.00" min="0" step="0.01" onchange="setComp('${r.id}','${d.id}','amount',this.value)"></div>`:'<div></div>'}<div class="fg"><label>วันที่ชดเชย</label><input type="date" value="${d.compDate||''}" onchange="setComp('${r.id}','${d.id}','date',this.value)"></div></div><div class="comp-row-bottom">${isEdit?`<button class="btn btn-sm" onclick="cancelEditComp('${r.id}','${d.id}')"><i class="ti ti-x"></i>ยกเลิก</button>`:''}<button class="btn btn-sm btn-warning" onclick="confirmComp('${r.id}','${d.id}')"><i class="ti ti-circle-check"></i>ยืนยันการชดเชย</button></div>`;
+      const csClass=d.compStatus==='ยังไม่ชดเชย'?'cs-none':d.compStatus==='ชดเชยบางส่วน'?'cs-partial':'cs-full';
+      return`<div class="comp-section ${csClass}"><div class="comp-header"><div style="font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap">${d.name} ${lotTag}<span style="font-weight:400;color:var(--color-text-secondary)">×${d.qty} ${d.unit} · ${fmtM(d.total)} บาท</span></div><div style="display:flex;align-items:center;gap:6px">${compBadge(d)}${isConf?`<button class="btn btn-sm btn-info" onclick="editComp('${r.id}','${d.id}')"><i class="ti ti-edit"></i>แก้ไข</button>`:''}</div></div>
+      ${compFields}
+      ${logRows?`<div class="log-section"><div class="log-title"><i class="ti ti-timeline"></i>ประวัติ</div><div class="log-list">${logRows}</div></div>`:''}</div>`;
     }).join('');
+    const noteId='note-'+r.id;
     return`<div class="h-item${isCan?' is-cancelled':''}">
-      ${isCan?`<div class="cancelled-banner"><i class="ti ti-ban" aria-hidden="true"></i>ยกเลิกแล้ว · ${fmtDT(r.cancelledAt)}</div>`:''}
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-        <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px">${tBadge}${isCan?'<span class="badge b-gray"><i class="ti ti-ban" aria-hidden="true"></i>ยกเลิก</span>':'<span class="badge b-teal"><i class="ti ti-check" aria-hidden="true"></i>รับคืนแล้ว</span>'}<span style="font-size:12px;color:var(--color-text-secondary)"><i class="ti ti-calendar" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> ${fmtD(r.returnDate)}</span></div>
-          <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8"><i class="ti ti-building-store" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> ${r.company} · <i class="ti ti-user" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> ${r.receiver}${r.phone?' · <i class="ti ti-phone" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> '+r.phone:''}</div>
-          <div style="font-size:13px;color:#085041;font-weight:600;margin-top:4px">มูลค่ารวม: ${fmtM(r.totalValue)} บาท</div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-          ${r.signature&&!isCan?'<img src="'+r.signature+'" class="h-sig" alt="ลายเซ็น">':''}
-          ${!isCan?`<button class="btn btn-sm btn-danger" onclick="cancelReturn('${r.id}')"><i class="ti ti-ban" aria-hidden="true"></i>ยกเลิก</button>`:''}
-        </div>
+      ${isCan?`<div class="cancelled-banner"><i class="ti ti-ban"></i>ยกเลิกการรับคืนแล้ว · ${fmtDT(r.cancelledAt)}</div>`:''}
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+        <div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">${tBadge}${pickBadge}${isCan?'<span class="badge b-gray"><i class="ti ti-ban"></i>ยกเลิกแล้ว</span>':'<span class="badge b-teal"><i class="ti ti-check"></i>รับคืนแล้ว</span>'}<span style="font-size:13px;color:var(--color-text-secondary)"><i class="ti ti-calendar" style="font-size:14px;vertical-align:-2px"></i> ${fmtD(r.returnDate)}</span></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--color-text-secondary)"><span><i class="ti ti-building-store" style="font-size:14px;vertical-align:-2px"></i> ${r.company}</span><span><i class="ti ti-user" style="font-size:14px;vertical-align:-2px"></i> ${r.receiver}</span>${r.phone?'<span><i class="ti ti-phone" style="font-size:14px;vertical-align:-2px"></i> '+r.phone+'</span>':''}</div>
+        ${r.note?`<div style="margin-top:6px;font-size:13px;color:#185FA5;background:#E6F1FB;border-radius:7px;padding:6px 10px;display:inline-flex;align-items:flex-start;gap:6px;max-width:100%"><i class="ti ti-notes" style="font-size:14px;flex-shrink:0;margin-top:1px"></i><span style="word-break:break-word">${r.note}</span></div>`:''}
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px"><label style="font-size:13px;color:#2a5a45;font-weight:500"><i class="ti ti-pencil" style="font-size:13px;vertical-align:-1px;color:#1D9E75"></i> หมายเหตุ (เพิ่มเติม)</label><textarea id="${noteId}" rows="2" placeholder="พิมพ์หมายเหตุเพิ่มเติม..." style="font-family:Sarabun,sans-serif;font-size:14px;padding:7px 10px;border:1.5px solid #8ecfb0;border-radius:8px;resize:vertical;min-height:52px;width:100%;color:#1a2e24;outline:none" onchange="saveReturnNote('${r.id}',this.value)">${r.extraNote||''}</textarea></div>
+        <div style="font-size:13px;color:#085041;font-weight:500;margin-top:6px">มูลค่ารวม: ${fmtM(r.totalValue)} บาท</div></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">${(r.sigUrl||r.signature)&&!isCan?`<img src="${r.sigUrl||r.signature}" class="h-sig" alt="ลายเซ็น" title="คลิกดูลายเซ็นขนาดเต็ม" onclick="openSigModal('${r.id}')">`:(!isCan?'<span style="font-size:13px;color:#aaa"><i class="ti ti-signature-off"></i> ไม่มีลายเซ็น</span>':'')}${!isCan?(r.pickupMethod==='truck'&&r.pickupStatus==='done'?`<button class="btn btn-sm btn-warning" onclick="cancelReturn('${r.id}')"><i class="ti ti-rotate-clockwise"></i>รีเซ็ตรอรถมารับ</button>`:`<button class="btn btn-sm btn-danger" onclick="cancelReturn('${r.id}')"><i class="ti ti-ban"></i>ยกเลิกรับคืน</button>`):''}</div>
       </div>
-      ${!isCan&&dRows?`<div class="divider"></div><div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--color-text-secondary)"><i class="ti ti-adjustments-horizontal" aria-hidden="true" style="font-size:13px;vertical-align:-2px"></i> สถานะการชดเชย</div>${dRows}`:''}
+      ${!isCan&&drugRows?`<div class="divider"></div><div style="font-size:13px;font-weight:500;margin-bottom:8px;color:var(--color-text-secondary)"><i class="ti ti-adjustments-horizontal" style="font-size:14px;vertical-align:-2px"></i> สถานะการชดเชยรายสินค้า</div>${drugRows}`:''}
     </div>`;
   }).join('');
 }
 
-/* ── SHEETS ── */
-async function post(sheet,hdr,row,action='append'){
-  try{await fetch(GAS,{method:'POST',body:JSON.stringify({action,sheet,headers:hdr,row})});setGs('ok','อัปเดต · '+new Date().toLocaleTimeString('th-TH'));}
-  catch(e){setGs('err','อัปเดตไม่สำเร็จ');}
+async function postSheet(sheet,headers,row,action='append'){
+  try{await fetch(GAS,{method:'POST',body:JSON.stringify({action,sheet,headers,row})});setGs('ok','อัปเดต Sheets · '+new Date().toLocaleTimeString('th-TH'));}
+  catch(e){setGs('err','Sheets: อัปเดตไม่สำเร็จ');}
 }
+
 async function syncAll(manual=false){
-  const btn=G('syncBtn');btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" aria-hidden="true"></i>กำลังดึง...';
+  const btn=document.getElementById('syncBtn');
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader"></i>กำลังดึง...';
   setGs('idle','กำลังเชื่อมต่อ...');
   try{
-    const [rD,rR]=await Promise.all([fetch(GAS+'?sheet=drugs').then(r=>r.json()),fetch(GAS+'?sheet=returns').then(r=>r.json())]);
-    let aD=0,aR=0;
-    if(Array.isArray(rD)&&rD.length>1){rD.slice(1).forEach(row=>{if(!row[1])return;const id=String(row[D_ID]||'');const st=String(row[D_STATUS]||'pending').trim();if(st==='returned'&&id)retSet.add(id);else if(st==='pending'&&id)retSet.delete(id);let ex=drugs.find(d=>(id&&d.id===id)||(d.name===String(row[1])&&d.company===String(row[2])&&String(d.expiry)===String(row[4])&&String(d.lot||'')===String(row[3]||'')));if(!ex){drugs.push({id:id||genId(),name:String(row[1]),company:String(row[2]),lot:String(row[3]||''),expiry:String(row[4]||''),qty:Number(row[5])||0,unit:String(row[6]||'กล่อง'),price:Number(row[7])||0,total:Number(row[8])||0,recorder:String(row[9]||''),note:String(row[10]||''),recordedAt:String(row[0]||''),status:st});aD++;}else{ex.status=st;if(id&&ex.id!==id)ex.id=id;}});}
-    if(Array.isArray(rR)&&rR.length>1){rR.slice(1).forEach(row=>{const retId=String(row[R_RET_ID]||'');if(!retId||!row[6])return;const rs=String(row[R_STATUS]||'active').trim().toLowerCase();const isCan=rs==='cancelled';const dId=String(row[R_DRUG_ID]||'');const cs=String(row[R_COMP_ST]||'ยังไม่ชดเชย');const ca=Number(row[R_COMP_AM])||0;const cd=String(row[R_COMP_DT]||'');const cv=String(row[R_CONFIRM]||'');const cc=cv==='ยืนยันแล้ว'||(cs==='ชดเชยทั้งหมด'&&!!cd);let rec=returns.find(x=>x.id===retId);if(!rec){rec={id:retId,returnDate:String(row[1]||''),company:String(row[2]||''),receiver:String(row[3]||''),phone:String(row[4]||''),returnType:String(row[5]||''),drugs:[],totalValue:Number(row[13])||0,signature:'',createdAt:String(row[1]||''),cancelled:isCan,cancelledAt:isCan?String(row[1]):''};returns.push(rec);aR++;}else{if(isCan&&!rec.cancelled){rec.cancelled=true;rec.cancelledAt=new Date().toISOString();}}const dEx=rec.drugs.find(d=>(dId&&d.drugId===dId)||(d.name===String(row[6])&&String(d.lot||'')===String(row[7]||'')));if(!dEx){rec.drugs.push({id:genId(),drugId:dId||genId(),name:String(row[6]),lot:String(row[7]||''),qty:Number(row[8])||0,unit:String(row[9]||'กล่อง'),expiry:String(row[10]||''),price:Number(row[11])||0,total:Number(row[12])||0,company:String(row[2]||''),compStatus:cs,compAmount:ca,compDate:cd,compConfirmed:cc,editing:false,log:[{ts:String(row[1]||''),event:'รับคืนสินค้า',detail:'นำเข้าจาก Sheets'}]});}else{if(cs!==dEx.compStatus||ca!==dEx.compAmount||cd!==dEx.compDate||cc!==dEx.compConfirmed){dEx.compStatus=cs;dEx.compAmount=ca;dEx.compDate=cd;dEx.compConfirmed=cc;}}});}
-    save();rebuildRetSel();rebuildHistSel();
-    if(G('page-history').classList.contains('active'))renderHistory();
-    const msg=manual?`ดึงข้อมูลสำเร็จ · ยา +${aD} · ใบ +${aR}`:'เชื่อมต่อสำเร็จ';
-    setGs('ok',msg);if(manual)alert2('ar',msg,'success');
-  }catch(e){setGs('err','เชื่อมต่อไม่สำเร็จ');if(manual)alert2('ar','เชื่อมต่อ Sheets ไม่สำเร็จ','error');}
-  btn.disabled=false;btn.innerHTML='<i class="ti ti-refresh" aria-hidden="true"></i>ดึงข้อมูล';
+    const [rD,rR]=await Promise.all([
+      fetch(GAS+'?sheet=drugs').then(r=>r.json()),
+      fetch(GAS+'?sheet=returns').then(r=>r.json())
+    ]);
+    let addD=0,addR=0;
+    // เก็บ snapshot ของ returns ที่มีอยู่ใน local เพื่อ restore ลายเซ็นหลัง sync
+    const existingLocalReturns=returns.map(x=>({id:x.id,signature:x.signature||'',sigUrl:x.sigUrl||'',pickupMethod:x.pickupMethod||'self',pickupStatus:x.pickupStatus||'pending',pickupReceiver:x.pickupReceiver||'',pickupDate:x.pickupDate||''}));
+    if(Array.isArray(rD)&&rD.length>1){
+      rD.slice(1).forEach(row=>{
+        if(!row[1])return;
+        const drugId=String(row[D_ID]||'');
+        const shStatus=String(row[D_STATUS]||'pending').trim();
+        if(shStatus==='returned'&&drugId)returnedSet.add(drugId);
+        else if(shStatus==='pending'&&drugId)returnedSet.delete(drugId);
+        let ex=drugs.find(d=>(drugId&&d.id===drugId)||(d.name===String(row[1])&&d.company===String(row[2])&&String(d.expiry)===String(row[4])&&String(d.lot||'')===String(row[3]||'')));
+        if(!ex){drugs.push({id:drugId||genId(),name:String(row[1]),company:String(row[2]),lot:String(row[3]||''),expiry:String(row[4]||''),qty:Number(row[5])||0,unit:String(row[6]||'กล่อง'),price:Number(row[7])||0,total:Number(row[8])||0,recorder:String(row[9]||''),note:String(row[10]||''),recordedAt:String(row[0]||''),status:shStatus});addD++;}
+        else{ex.status=shStatus;if(drugId&&ex.id!==drugId)ex.id=drugId;}
+      });
+    }
+    if(Array.isArray(rR)&&rR.length>1){
+      rR.slice(1).forEach(row=>{
+        const retId=String(row[R_RET_ID]||'');if(!retId||!row[6])return;
+        const receiptStatus=String(row[R_STATUS]||'active').trim().toLowerCase();
+        const isCan=receiptStatus==='cancelled';
+        const drugId=String(row[R_DRUG_ID]||'');
+        const compStatus=String(row[R_COMP_ST]||'ยังไม่ชดเชย');
+        const compAmount=Number(row[R_COMP_AM])||0;
+        const compDate=String(row[R_COMP_DT]||'');
+        const confirmVal=String(row[R_CONFIRM]||'');
+        const compConfirmed=confirmVal==='ยืนยันแล้ว'||(compStatus==='ชดเชยทั้งหมด'&&!!compDate);
+        let rec=returns.find(x=>x.id===retId);
+        if(!rec){
+          // ค้นหาลายเซ็นที่อาจมีอยู่ใน local cache ก่อนหน้า (กรณี reload ใหม่)
+          const existingLocal=existingLocalReturns.find(x=>x.id===retId);
+          const savedSig=(existingLocal&&existingLocal.signature)||'';
+          const savedSigUrl=(existingLocal&&existingLocal.sigUrl)||String(row[17]||'');
+          const _pickupMethod=row[22]==='truck'?'truck':'self';
+          // ถ้า Sheet มี done ให้ใช้ Sheet, ถ้าไม่มีให้ใช้ local snapshot
+          const _exLR=existingLocalReturns.find(x=>x.id===retId);
+          const _shDone=row[23]==='done';
+          const _localDone=_exLR&&_exLR.pickupStatus==='done';
+          const _pickupStatus=_shDone||_localDone?'done':(_pickupMethod==='self'?'done':'pending');
+          const _pickupReceiver=_shDone?String(row[24]||''):(_exLR?_exLR.pickupReceiver||'':'');
+          const _pickupDate=_shDone?String(row[25]||''):(_exLR?_exLR.pickupDate||'':'');
+          rec={id:retId,returnDate:String(row[1]||''),company:String(row[2]||''),receiver:String(row[3]||''),phone:String(row[4]||''),returnType:String(row[5]||''),note:'',pickupMethod:_pickupMethod,pickupStatus:_pickupStatus,pickupReceiver:_pickupReceiver,pickupDate:_pickupDate,drugs:[],totalValue:Number(row[13])||0,signature:savedSig,sigUrl:savedSigUrl,createdAt:String(row[1]||''),cancelled:isCan,cancelledAt:isCan?String(row[1]):''};
+          returns.push(rec);addR++;
+        }
+        else{
+          if(isCan&&!rec.cancelled){rec.cancelled=true;rec.cancelledAt=new Date().toISOString();}
+          if(!rec.sigUrl&&row[17])rec.sigUrl=String(row[17]);
+          // อ่าน pickupMethod และ pickupStatus จาก Sheet (GAS รองรับแล้ว)
+          if(row[22]==='self'||row[22]==='truck')rec.pickupMethod=String(row[22]);
+          if(row[23]==='done'){rec.pickupStatus='done';rec.pickupReceiver=String(row[24]||'');rec.pickupDate=String(row[25]||'');}
+        }
+        const dEx=rec.drugs.find(d=>(drugId&&d.drugId===drugId)||(d.name===String(row[6])&&String(d.lot||'')===String(row[7]||'')));
+        if(!dEx){rec.drugs.push({id:genId(),drugId:drugId||genId(),name:String(row[6]),lot:String(row[7]||''),qty:Number(row[8])||0,unit:String(row[9]||'กล่อง'),expiry:String(row[10]||''),price:Number(row[11])||0,total:Number(row[12])||0,company:String(row[2]||''),compStatus,compAmount,compDate,compConfirmed,editing:false,log:[{ts:String(row[1]||''),event:'รับคืนสินค้า',detail:'นำเข้าจาก Sheets'}]});}
+        else{if(compStatus!==dEx.compStatus||compAmount!==dEx.compAmount||compDate!==dEx.compDate||compConfirmed!==dEx.compConfirmed){dEx.compStatus=compStatus;dEx.compAmount=compAmount;dEx.compDate=compDate;dEx.compConfirmed=compConfirmed;}}
+      });
+    }
+    // restore: Sheet คือ source of truth สำหรับ pickupStatus=done
+    // ถ้า Sheet ยังไม่ update ให้ใช้ค่าจาก local snapshot
+    returns.forEach(rec=>{
+      if(!rec.signature)rec.signature=loadSig(rec.id);
+      if(rec.pickupStatus==='done')return; // Sheet อัปเดตแล้ว ใช้ค่านั้นเลย
+      const ex=existingLocalReturns.find(x=>x.id===rec.id);
+      if(ex&&ex.pickupStatus==='done'){
+        rec.pickupStatus='done';rec.pickupReceiver=ex.pickupReceiver||'';rec.pickupDate=ex.pickupDate||'';
+      } else if(!rec.pickupStatus){
+        rec.pickupStatus=(rec.pickupMethod==='self'?'done':'pending');
+      }
+    });
+    saveLocal();rebuildReturnSel();rebuildHistorySel();rebuildPickupSel();if(document.getElementById('page-pickup').classList.contains('active'))renderPickupList();
+    if(document.getElementById('page-history').classList.contains('active'))renderHistory();
+    const msg=manual?`ดึงข้อมูลสำเร็จ · ยา +${addD} · ใบรับคืน +${addR}`:'เชื่อมต่อ Sheets สำเร็จ';
+    setGs('ok',msg);
+    if(manual)showAlert('alert-record',msg,'success');
+  }catch(e){
+    setGs('err','ไม่สามารถเชื่อมต่อ Google Sheets ได้');
+    if(manual)showAlert('alert-record','เชื่อมต่อ Sheets ไม่สำเร็จ','error');
+  }
+  btn.disabled=false;btn.innerHTML='<i class="ti ti-refresh"></i>ดึงข้อมูล';
 }
-function clearF(){['fDrug','fCo','fType','fComp','fCan'].forEach(i=>G(i).value='');renderHistory();}
+
+function clearFilters(){['filterDrug','filterCompany','filterType','filterComp','filterCancel','filterPickup'].forEach(id=>document.getElementById(id).value='');renderHistory();}
 function exportCSV(){
   if(!returns.length){alert('ไม่มีข้อมูล');return;}
   const rows=[['วันที่','บริษัท','ผู้รับคืน','เบอร์โทร','ประเภท','ชื่อยา','Lot No.','จำนวน','หน่วย','หมดอายุ','มูลค่า/หน่วย','มูลค่ารวมสินค้า','มูลค่ารวมใบ','สถานะชดเชย','จำนวนชดเชย','วันที่ชดเชย','ยืนยันชดเชย','สถานะใบ']];
@@ -485,16 +724,84 @@ function exportCSV(){
   const csv='\uFEFF'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
   const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='expired_drugs_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
 }
-function clearCache(){
-  if(!confirm('ล้างข้อมูล Cache?'))return;
-  drugs=[];returns=[];retSet=new Set();save();rebuildRetSel();rebuildHistSel();
-  if(G('page-history').classList.contains('active'))renderHistory();
+function clearLocalData(){
+  if(!confirm('ล้างข้อมูล Cache? (ข้อมูลใน Google Sheet ยังคงอยู่)'))return;
+  drugs=[];returns=[];returnedSet=new Set();saveLocal();rebuildReturnSel();rebuildHistorySel();rebuildPickupSel();
+  if(document.getElementById('page-history').classList.contains('active'))renderHistory();
   setTimeout(()=>syncAll(false),500);
 }
-function save(){try{window.storage.set('drugs_v17',JSON.stringify(drugs));window.storage.set('returns_v17',JSON.stringify(returns));}catch(e){}}
-async function load(){
-  try{const d=await window.storage.get('drugs_v17');const r=await window.storage.get('returns_v17');if(d)drugs=JSON.parse(d.value);if(r)returns=JSON.parse(r.value);drugs.filter(x=>x.status==='returned').forEach(x=>retSet.add(x.id));}catch(e){}
+// เก็บ/โหลด pickup status แยกใน localStorage เพื่อไม่ถูก overwrite โดย syncAll
+// pickupMap เก็บใน memory และ persist ใน window.storage key เดียว
+let pickupMap={};  // {retId: {status,receiver,date}}
+async function savePickupMap(){
+  try{await window.storage.set('pickupmap_v1',JSON.stringify(pickupMap));}catch(e){}
 }
-async function init(){await load();buildSelects();resizeCvs();syncAll(false);}
-init();
+async function loadPickupMap(){
+  try{
+    const v=await window.storage.get('pickupmap_v1');
+    if(v&&v.value)pickupMap=JSON.parse(v.value);
+  }catch(e){}
+}
+async function savePickupEntry(retId,status,receiver,date){
+  pickupMap[retId]={status,receiver:receiver||'',date:date||''};
+  await savePickupMap();
+}
+function getPickupEntry(retId){
+  return pickupMap[retId]||null;
+}
+
+// เก็บ/โหลด signature แยกใน localStorage (ไม่ผ่าน window.storage เพื่อหลีกเลี่ยงปัญหา shared/size limit)
+function saveSig(retId,sigData){try{localStorage.setItem('sig_'+retId,sigData);}catch(e){}}
+function loadSig(retId){try{return localStorage.getItem('sig_'+retId)||'';}catch(e){return '';}}
+
+function saveLocal(){
+  try{
+    const returnsNoSig=returns.map(r=>{
+      const o=Object.assign({},r);
+      delete o.signature;
+      return o;
+    });
+    localStorage.setItem('drugs_v17',JSON.stringify(drugs));
+    localStorage.setItem('returns_v17',JSON.stringify(returnsNoSig));
+  }catch(e){console.error('saveLocal error',e);}
+}
+function loadLocal(){
+  try{
+    const d=localStorage.getItem('drugs_v17');
+    const r=localStorage.getItem('returns_v17');
+    if(d)drugs=JSON.parse(d);
+    if(r){
+      returns=JSON.parse(r);
+      returns.forEach(rec=>{
+        rec.signature=loadSig(rec.id);
+        if(!rec.pickupMethod)rec.pickupMethod='self';
+        if(!rec.pickupReceiver)rec.pickupReceiver='';
+        if(!rec.pickupDate)rec.pickupDate='';
+        if(!rec.pickupStatus)rec.pickupStatus=(rec.pickupMethod==='self'?'done':'pending');
+      });
+    }
+    drugs.filter(x=>x.status==='returned').forEach(x=>returnedSet.add(x.id));
+  }catch(e){console.error('loadLocal error',e);}
+}
+async function init(){
+  switchPage('record');
+  loadLocal();
+  await syncAll(false);
+}
+function openSigModal(retId){
+  const r=returns.find(x=>x.id===retId);if(!r)return;
+  const src=r.sigUrl||r.signature||'';
+  if(!src){alert('ไม่พบลายเซ็น');return;}
+  document.getElementById('sigModalImg').src=src;
+  document.getElementById('sigModalMeta').innerHTML=
+    '<i class="ti ti-building-store" style="vertical-align:-2px"></i> '+r.company+
+    ' &nbsp;·&nbsp; <i class="ti ti-user" style="vertical-align:-2px"></i> '+r.receiver+
+    ' &nbsp;·&nbsp; <i class="ti ti-calendar" style="vertical-align:-2px"></i> '+fmtD(r.returnDate)+
+    (r.sigUrl?'&nbsp;<span class="badge b-green" style="font-size:11px"><i class="ti ti-cloud-check"></i>บันทึกใน Drive</span>':'&nbsp;<span class="badge b-green" style="font-size:11px"><i class="ti ti-circle-check"></i>บันทึกแล้ว</span>');
+  document.getElementById('sigModal').classList.add('open');
+}
+function closeSigModal(){document.getElementById('sigModal').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSigModal();});
+
+initCombo();resizeCanvas();init();
 </script>
